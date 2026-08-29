@@ -4,8 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
+
+    <header>
+        <div class="logo">
+            <h1>NutriVida</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html" class="active">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="auth-card">
+            <h2>Crear Cuenta</h2>
+            <form id="registroForm" novalidate>
+                <div class="form-group">
+                    <label for="run">RUN (Sin puntos ni guion):</label>
+                    <input type="text" id="run" name="run" maxlength="9" placeholder="19011022K" required>
+                    <span class="error-message" id="runError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" maxlength="50" placeholder="Juan" required>
+                    <span class="error-message" id="nombreError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" maxlength="100" placeholder="Pérez Soto" required>
+                    <span class="error-message" id="apellidosError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">Correo Electrónico:</label>
+                    <input type="email" id="regEmail" name="email" maxlength="100" placeholder="ejemplo@gmail.com" required>
+                    <span class="error-message" id="regEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento (Opcional):</label>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                    <span class="error-message" id="fechaNacimientoError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Región:</label>
+                    <select id="region" name="region">
+                        <option value="">Seleccione una región</option>
+                    </select>
+                    <span class="error-message" id="regionError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="comuna">Comuna:</label>
+                    <select id="comuna" name="comuna" disabled>
+                        <option value="">Seleccione primero una región</option>
+                    </select>
+                    <span class="error-message" id="comunaError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" maxlength="300" placeholder="Av. Principal 123, Depto 45" required>
+                    <span class="error-message" id="direccionError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoUsuario">Tipo de Usuario:</label>
+                    <select id="tipoUsuario" name="tipoUsuario">
+                        <option value="Cliente">Cliente</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Vendedor">Vendedor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <input type="password" id="regPassword" name="password" minlength="4" maxlength="10" placeholder="Entre 4 y 10 caracteres" required>
+                    <span class="error-message" id="regPasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" required>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            <p class="auth-redirect">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NutriVida - Clínica y Tienda Nutricional. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="assets/js/regiones.js"></script>
+    <script src="assets/js/validation.js"></script>
 </body>
 </html>
