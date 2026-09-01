@@ -4,11 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriVida</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
 </head>
 <body>
+
     <header>
-        <h1>NutriVida</h1>
+        <div class="logo">
+            <h1>NutriVida</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li> 
+            </ul>
+        </nav>
     </header>
     
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Atención Nutricional Clínica y Personalizada</h2>
+            <p>Desde 2016 apoyando la salud y calidad de vida de nuestros pacientes en Temuco mediante planes respaldados por evidencia científica.</p>
+            <div class="hero-buttons">
+                <a href="contacto.html" class="btn-primary">Agendar Consulta</a>
+                <a href="nosotros.html" class="btn-secondary">Conócenos</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Sección Servicios Destacados -->
+        <section class="services-summary">
+            <h2 class="section-title">Nuestras Especialidades</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Control Metabólico</h3>
+                    <p>Manejo nutricional integral para resistencia a la insulina, diabetes, hipertensión y patologías metabólicas.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏋️‍♂️</div>
+                    <h3>Nutrición Deportiva</h3>
+                    <p>Optimización del rendimiento físico, recomposición corporal y pautas de suplementación estratégica.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🥗</div>
+                    <h3>Planes Personalizados</h3>
+                    <p>Evaluación antropométrica y pautas de alimentación ajustadas a tus objetivos, rutina y gustos.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>Alimentación Basada en Plantas</h3>
+                    <p>Acompañamiento profesional y seguro para la transición hacia dietas vegetarianas y veganas.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Banner Promocional del Blog -->
+        <section class="blog-banner-promo">
+            <div class="promo-text">
+                <h2>Divulgación y Salud</h2>
+                <p>Aprende a desmentir mitos nutricionales y mejorar tus hábitos con nuestras publicaciones más recientes.</p>
+            </div>
+            <a href="blog.html" class="btn-primary">Ver Noticias y Casos</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
