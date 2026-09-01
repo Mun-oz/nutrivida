@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isValid) {
                 emailInput.value = "";
                 passwordInput.value = "";
-                emailInput.focus(); // Coloca el cursor en el primer campo
+                emailInput.focus();
             } else {
                 alert("¡Inicio de sesión exitoso!");
                 window.location.href = "index.html";
@@ -239,7 +239,7 @@ const registroForm = document.getElementById("registroForm");
             // g. Validar Contraseña
             const passwordValue = regPasswordInput.value.trim();
             if (!passwordValue) {
-                passwordError.textContent = "La contraseña es obligatoria.";
+                regPasswordError.textContent = "La contraseña es obligatoria.";
                 regPasswordInput.value = "";
                 isValid = false;
             } else if (passwordValue.length < 4 || passwordValue.length > 10) {
