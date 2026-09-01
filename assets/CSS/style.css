@@ -106,7 +106,7 @@ nav a.active {
 }
 
 .form-group label {
-    margin-bottom: flex;
+    margin-bottom: 0.5rem;
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -580,4 +580,26 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+}
+
+
+/* ===============================
+    9. BREAKPOINTS
+   =============================== */
+
+/* MOVILES */
+@media (min-width: 360px) {
+    .container { padding: 1rem;}
+}
+
+/* TABLETAS */
+@media (min-width: 768px) {
+    .container { padding: 2rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* COMPUTADORES */
+@media (min-width: 1280px) {
+    .services-grid { grid-template-columns: repeat(4, 1fr); }
+    .container { max-width: 1200px; margin: 0 auto; }
 }
