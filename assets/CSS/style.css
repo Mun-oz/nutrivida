@@ -450,3 +450,134 @@ footer {
         height: 180px;
     }
 }
+
+/* ===============================
+    8. SECCION INICIO / INDEX
+   =============================== */
+
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c3e50 100%);
+    color: #ffffff;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-bottons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary { 
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0,15);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.services-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.services-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* Promo Blog */
+.blog-banner-promo {
+    background-color: #f0f7f4;
+    border-left: 5px solid var(--primary-color);
+    padding: 2rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.promo-text h2 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.promo-text p {
+    color: #444444;
+    font-size: 0.95rem;
+}
+
+/* Responsivo en Hero y Promo */
+@media (max-width: 768px) {
+    .blog-banner-promo {
+        flex-direction: column;
+        text-align: center;
+    }
+}
