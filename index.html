@@ -12,75 +12,95 @@
         <div class="logo">
             <h1>NutriVida</h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html">Iniciar Sesión</a></li> 
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="hero-section">
-        <div class="hero-content">
-            <h2>Atención Nutricional Clínica y Personalizada</h2>
-            <p>Desde 2016 apoyando la salud y calidad de vida de nuestros pacientes en Temuco mediante planes respaldados por evidencia científica.</p>
-            <div class="hero-buttons">
-                <a href="contacto.html" class="btn-primary">Agendar Consulta</a>
-                <a href="nosotros.html" class="btn-secondary">Conócenos</a>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-container" id="navContainer">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="auth-link">Iniciar sesión</a> | 
+                <a href="registro.html" class="auth-link">Registrar usuario</a>
+                <a href="carrito.html" class="cart-icon">🛒 Cart (0)</a>
             </div>
         </div>
-    </section>
-
-    <main class="container">
-        
-        <!-- Sección Servicios Destacados -->
-        <section class="services-summary">
-            <h2 class="section-title">Nuestras Especialidades</h2>
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Control Metabólico</h3>
-                    <p>Manejo nutricional integral para resistencia a la insulina, diabetes, hipertensión y patologías metabólicas.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🏋️‍♂️</div>
-                    <h3>Nutrición Deportiva</h3>
-                    <p>Optimización del rendimiento físico, recomposición corporal y pautas de suplementación estratégica.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🥗</div>
-                    <h3>Planes Personalizados</h3>
-                    <p>Evaluación antropométrica y pautas de alimentación ajustadas a tus objetivos, rutina y gustos.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🌱</div>
-                    <h3>Alimentación Basada en Plantas</h3>
-                    <p>Acompañamiento profesional y seguro para la transición hacia dietas vegetarianas y veganas.</p>
-                </div>
-
+    </header>
+    
+    <main class="container-home">
+        <section class="home-hero">
+            <div class="hero-text">
+                <h2>CLÍNICA NUTRIVIDA</h2>
+                <p>Nuestros planes y servicios nutricionales clínicos brindan acompañamiento personalizado para identificar tus necesidades de salud. Conoce nuestros planes y agenda tu evaluación hoy mismo.</p>
+                <a href="productos.html" class="btn-outline">📥 ver productos</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/img/clinNutri.jpg" alt="Clínica NutriVida" class="hero-img-real">
             </div>
         </section>
 
-        <!-- Banner Promocional del Blog -->
-        <section class="blog-banner-promo">
-            <div class="promo-text">
-                <h2>Divulgación y Salud</h2>
-                <p>Aprende a desmentir mitos nutricionales y mejorar tus hábitos con nuestras publicaciones más recientes.</p>
-            </div>
-            <a href="blog.html" class="btn-primary">Ver Noticias y Casos</a>
-        </section>
+        <section class="home-products">
+            <div class="products-grid">
+  
+                <div class="product-card-home">
+                    <img src="assets/img/metabolismo.png" alt="Metabólico" class="product-img-real">
+                    <div class="product-info">
+                        <h4>Plan Control Metabólico</h4>
+                        <p class="attributes">Duración: 1 mes | Incluye pauta</p>
+                        <p class="price">$45.000</p>
+                    </div>
+                </div>
 
+                <div class="product-card-home">
+                    <img src="assets/img/nutriciondeporte.jpg" alt="Nutrición Deportiva" class="product-img-real">
+                    <div class="product-info">
+                        <h4>Plan Nutrición Deportiva</h4>
+                        <p class="attributes">Duración: 1 mes | Eval. física</p>
+                        <p class="price">$50.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card-home">
+                    <img src="assets/img/t_veg.jpg" alt="Transición Vegana" class="product-img-real">
+                    <div class="product-info">
+                        <h4>Plan Transición Vegana</h4>
+                        <p class="attributes">Duración: 1 mes | Recetario</p>
+                        <p class="price">$40.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card-home">
+                    <img src="assets/img/control_seg.png" alt="Clínica NutriVida" class="product-img-real">
+                    <div class="product-info">
+                        <h4>Control de Seguimiento</h4>
+                        <p class="attributes">Duración: 30 min | Presencial</p>
+                        <p class="price">$25.000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.</p>
+    <footer class="main-footer">
+        <div class="footer-info">
+            <p>📍 Ubicación: <a href="https://www.google.com/maps/search/?api=1&query=Temuco,+Región+de+La+Araucanía" target="_blank" rel="noopener noreferrer" class="map-link">Temuco, Región de La Araucanía</a></p>
+            <p>📧 Correo: contacto@nutrivida.cl</p>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <script src="assets/JS/validation.js"></script>
 </body>
 </html>

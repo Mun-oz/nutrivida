@@ -266,3 +266,16 @@ const registroForm = document.getElementById("registroForm");
             }
         });
     }
+
+// 4. LOGICA DEL MENU DE INDEX.HTML
+
+document.addEventListener("DOMContentLoaded",() => {
+    const menuToggle = document.getElementById("menuToggle");
+    const navContainer = document.getElementById("navContainer")
+
+    if (menuToggle && navContainer) {
+        menuToggle.addEventListener("click", () => {
+            navContainer.classList.toggle("show");
+        })
+    }
+});

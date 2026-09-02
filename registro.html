@@ -12,14 +12,29 @@
         <div class="logo">
             <h1>NutriVida</h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html" class="active">Iniciar Sesión</a></li>
-            </ul>
-        </nav>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-container" id="navContainer">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="auth-link">Iniciar sesión</a> | 
+                <a href="registro.html" class="auth-link">Registrar usuario</a>
+                <a href="carrito.html" class="cart-icon">🛒 Cart (0)</a>
+            </div>
+        </div>
     </header>
 
     <main class="container">
@@ -105,10 +120,16 @@
         </section>
     </main>
 
-    <footer>
-       <p>&copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.</p>
+    <footer class="main-footer">
+        <div class="footer-info">
+            <p>📍 Ubicación: <a href="https://www.google.com/maps/search/?api=1&query=Temuco,+Región+de+La+Araucanía" target="_blank" rel="noopener noreferrer" class="map-link">Temuco, Región de La Araucanía</a></p>
+            <p>📧 Correo: contacto@nutrivida.cl</p>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.</p>
+        </div>
     </footer>
-
+    
     <script src="assets/JS/regiones.js"></script>
     <script src="assets/JS/validation.js"></script>
 </body>
