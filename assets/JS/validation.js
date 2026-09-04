@@ -126,7 +126,6 @@ const registroForm = document.getElementById("registroForm");
         const apellidosInput = document.getElementById("apellidos");
         const regEmailInput = document.getElementById("regEmail");
         const direccionInput = document.getElementById("direccion");
-        const tipoUsuarioSelect = document.getElementById("tipoUsuario");
         const regPasswordInput = document.getElementById("regPassword");
         const confirmPasswordInput = document.getElementById("confirmPassword");
 
@@ -261,7 +260,8 @@ const registroForm = document.getElementById("registroForm");
             }
 
             if (isValid) {
-                alert(`¡Registro de ${tipoUsuarioSelect.value} exitoso! Redirigiendo a inicio de sesión.`);
+                alert("¡Registro exitoso! Redirigiendo a inicio de sesión.");
+                registroForm.reset();
                 window.location.href = "login.html";
             }
         });
