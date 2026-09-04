@@ -279,3 +279,65 @@ document.addEventListener("DOMContentLoaded",() => {
         })
     }
 });
+
+// 5. VALIDACION FORMULARIO DE CONTACTO
+const contactoForm = document.getElementById("contactoForm");
+
+if (contactoForm) {
+    const contactoNombre = document.getElementById("contactoNombre");
+    const contactoEmail = document.getElementById("contactoEmail");
+    const contactoMensaje = document.getElementById("contactoMensaje");
+
+    const contactoNombreError = document.getElementById("contactoNombreError");
+    const contactoEmailError = document.getElementById("contactoEmailError");
+    const contactoMensajeError = document.getElementById("contactoMensajeError");
+
+    contactoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        contactoNombreError.textContent = "";
+        contactoEmailError.textContent = "";
+        contactoMensajeError.textContent = "";
+
+        // Validar Nombre
+        const nombreValue = contactoNombre.value.trim();
+        if (!nombreValue) {
+            contactoNombreError.textContent = "El nombre es obligatorio.";
+            isValid = false;
+        } else if (nombreValue.length > 100) {
+            contactoNombreError.textContent = "El nombre no puede superar los 100 caracteres.";
+            isValid = false;
+        }
+
+        // Validar Correo
+        const emailValue = contactoEmail.value.trim();
+        const allowedDomains = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
+        const hasValidDomain = allowedDomains.some(domain => emailValue.endsWith(domain));
+
+        if (emailValue) { 
+            if (emailValue.length > 100) {
+                contactoEmailError.textContent = "El correo no puede exceder los 100 caracteres.";
+                isValid = false;
+            } else if (!hasValidDomain) {
+                contactoEmailError.textContent = "El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com";
+                isValid = false;
+            }
+        }
+
+        // Validar Comentario
+        const mensajeValue = contactoMensaje.value.trim();
+        if (!mensajeValue) {
+            contactoMensajeError.textContent = "El comentario es obligatorio.";
+            isValid = false;
+        } else if (mensajeValue.length > 500) {
+            contactoMensajeError.textContent = "El comentario no puede superar los 500 caracteres.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.");
+            contactoForm.reset();
+        }
+    });
+}
