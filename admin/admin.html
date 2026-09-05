@@ -4,8 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="../assets/CSS/style.css">
 </head>
-<body>
+<body class="admin-body"> 
+
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="icon">Ø</span> NutriVida
+            </div>
+            
+            <hr class="sidebar-divider">
+            
+            <ul class="sidebar-nav">
+                <li class="active" onclick="window.location.href='home.html'"><span class="icon">⊞</span> Dashboard</li>
+                <li onclick="window.location.href='catalogo.html'"><span class="icon">📋</span> Gestión de Catálogos</li>
+                <li onclick="window.location.href='usuario.html'"><span class="icon">👥</span> Gestión de Usuarios</li>
+            </ul>
+            
+            <div class="sidebar-spacer"></div>
+            
+            <ul class="sidebar-nav">
+                <li><span class="icon">⚙️</span>Configuración</li>
+                <li onclick="window.location.href='../index.html'"><span class="icon">🌍</span> Ver sitio web</li>
+                <li onclick="window.location.href='../login.html'"><span class="icon">🚪</span> Cerrar Sesión</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h2>¡HOLA Administrador!</h2>
+                <div class="notificacions">
+                    <span>🔔</span>
+                </div>
+            </header>
+            
+            <div class="content-panel top-panel" style="display: flex; gap: 2rem;">
+                <div style="flex: 1; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; cursor: pointer;" onclick="window.location.href='catalogo.html'">
+                    <h3 style="color: #2e7d32; font-size: 1.5rem; margin-bottom: 1rem;">📋 Catálogo de Servicios</h3>
+                    <p style="color: #666;">Crear, editar o visualizar los servicios nutricionales ofrecidos.</p>
+                </div>
+
+                <div style="flex: 1; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; cursor: pointer;" onclick="window.location.href='usuario.html'">
+                    <h3 style="color: #2e7d32; font-size: 1.5rem; margin-bottom: 1rem;">👥 Usuarios y Pacientes</h3>
+                    <p style="color: #666;">Administrar roles, registrar pacientes y editar perfiles.</p>
+                </div>
+            </div>
+        </main>
+    </div>
     
+    <script src="../assets/JS/script.js"></script>
 </body>
 </html>
