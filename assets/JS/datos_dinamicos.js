@@ -30,20 +30,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const listaUsuarios = [
         // Nutricionistas
-        { nombre: "Nut. Carolina Fuentes M.", correo: "cfuentes@nutrivida.cl", rol: "Nutricionista" },
-        { nombre: "Nut. Rodrigo Sepúlveda A.", correo: "rsepulveda@nutrivida.cl", rol: "Nutricionista" },
-        { nombre: "Nut. Daniela Morales C.", correo: "dmorales@nutrivida.cl", rol: "Nutricionista" },
-        { nombre: "Nut. Felipe Araya R.", correo: "faraya@nutrivida.cl", rol: "Nutricionista" },
+        { 
+            codigo: "NUT001", 
+            nombre: "Nut. Carolina Fuentes M.", 
+            correo: "cfuentes@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Obesidad y síndrome metabólico",
+            dias: "Lunes, Miércoles, Viernes",
+            horario: "09:00 - 17:00"
+        },
+ { 
+            codigo: "NUT002", 
+            nombre: "Nut. Rodrigo Sepúlveda A.", 
+            correo: "rsepulveda@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Nutrición deportiva y rendimiento",
+            dias: "Martes, Jueves, Sábado",
+            horario: "09:00 - 14:00"
+        },
+        { 
+            codigo: "NUT003", 
+            nombre: "Nut. Daniela Morales C.", 
+            correo: "dmorales@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Alimentación vegetariana, vegana y trastornos alimentarios",
+            dias: "Lunes a Viernes",
+            horario: "08:00 - 13:00"
+        },
+        { 
+            codigo: "NUT004", 
+            nombre: "Nut. Felipe Araya R.", 
+            correo: "faraya@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Nutrición pediátrica y familiar",
+            dias: "Martes a Viernes",
+            horario: "14:00 - 19:00"
+        },
         // Usuarios
-        { nombre: "Marcelo Muñoz", correo: "admin@nutrivida.cl", rol: "Administrador" },
-        { nombre: "Juan Pérez", correo: "juan.perez@gmail.com", rol: "Paciente" }
+        { 
+            codigo: "ADM01", 
+            nombre: "Marcelo Muñoz", 
+            correo: "admin@nutrivida.cl", 
+            rol: "Administrador",
+            especialidad: "Gestión y Administración de Sistemas",
+            dias: "Lunes a Viernes",
+            horario: "09:00 - 18:00"
+        },
+        { 
+            codigo: "PAC01", 
+            nombre: "Juan Pérez", 
+            correo: "juan.perez@gmail.com", 
+            rol: "Paciente",
+            especialidad: "N/A",
+            dias: "N/A",
+            horario: "N/A"
+        }
     ];
 
-
-    // 2. LÓGICA DE INYECCIÓN PARA CATÁLOGO
-
+// 2. LÓGICA DE INYECCIÓN PARA CATÁLOGO
     const tbodyCatalogo = document.getElementById('tablaCatalogoBody');
-    
     if (tbodyCatalogo) {
         catalogoServicios.forEach(servicio => {
             const precioFormateado = servicio.precio.toLocaleString('es-CL');
@@ -61,20 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // 3. LÓGICA DE INYECCIÓN PARA USUARIOS
-
+// 3. LÓGICA DE INYECCIÓN PARA USUARIOS
     const tbodyUsuarios = document.getElementById('tablaUsuariosBody');
-    
     if (tbodyUsuarios) {
-        listaUsuarios.forEach(usuario => {
+        listaUsuarios.forEach((usuario, index) => {
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${usuario.nombre}</td>
                 <td>${usuario.correo}</td>
                 <td>${usuario.rol}</td>
                 <td style="display: flex; gap: 0.5rem;">
-                    <button class="btn-small btn-save" onclick="window.location.href='mostrar_usuario.html'">Ver Perfil</button>
+                    <button class="btn-small btn-save" type="button" onclick="verPerfil(${index})">Ver Perfil</button>
                     <button class="btn-small" style="background-color: #f39c12; color: white;" onclick="window.location.href='editar_usuario.html'">Editar</button>
                 </td>
             `;
@@ -82,3 +124,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Función global usando el índice del arreglo
+window.verPerfil = function(index) {
+    const listaUsuarios = [
+        { 
+            codigo: "NUT001", 
+            nombre: "Nut. Carolina Fuentes M.", 
+            correo: "cfuentes@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Obesidad y síndrome metabólico",
+            dias: "Lunes, Miércoles, Viernes",
+            horario: "09:00 - 17:00"
+        },
+        { 
+            codigo: "NUT002", 
+            nombre: "Nut. Rodrigo Sepúlveda A.", 
+            correo: "rsepulveda@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Nutrición deportiva y rendimiento",
+            dias: "Martes, Jueves, Sábado",
+            horario: "09:00 - 14:00"
+        },
+        { 
+            codigo: "NUT003", 
+            nombre: "Nut. Daniela Morales C.", 
+            correo: "dmorales@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Alimentación vegetariana, vegana y trastornos alimentarios",
+            dias: "Lunes a Viernes",
+            horario: "08:00 - 13:00"
+        },
+        { 
+            codigo: "NUT004", 
+            nombre: "Nut. Felipe Araya R.", 
+            correo: "faraya@nutrivida.cl", 
+            rol: "Nutricionista",
+            especialidad: "Nutrición pediátrica y familiar",
+            dias: "Martes a Viernes",
+            horario: "14:00 - 19:00"
+        },
+        { 
+            codigo: "ADM01", 
+            nombre: "Marcelo Muñoz", 
+            correo: "admin@nutrivida.cl", 
+            rol: "Administrador",
+            especialidad: "Gestión y Administración de Sistemas",
+            dias: "Lunes a Viernes",
+            horario: "09:00 - 18:00"
+        },
+        { 
+            codigo: "PAC01", 
+            nombre: "Juan Pérez", 
+            correo: "juan.perez@gmail.com", 
+            rol: "Paciente",
+            especialidad: "N/A",
+            dias: "N/A",
+            horario: "N/A"
+        }
+    ];
+
+    const usuarioSeleccionado = listaUsuarios[index];
+    localStorage.setItem('perfilActivo', JSON.stringify(usuarioSeleccionado));
+    window.location.href = 'mostrar_usuario.html';
+};
