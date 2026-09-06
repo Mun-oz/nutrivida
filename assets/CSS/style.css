@@ -798,3 +798,172 @@ nav a.active {
     outline: none;
     box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
 }
+
+/* ===========================================
+    11. DASHBOARD ADMIN (LAYOUT Y TABLAS)
+   =========================================== */
+
+.admin-body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; 
+    background-color: var(--background-color);
+}
+
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* --- MENU LATERAL (SIDEBAR) --- */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+}
+
+.sidebar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.sidebar-nav li {
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estado activo resaltado */
+.sidebar-nav li.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    background-color: #e8f5e9;
+    border-right: 4px solid var(--primary-color);
+}
+
+.icon {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-spacer {
+    flex-grow: 1;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.content-panel {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto; 
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.admin-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Botones pequeños para la tabla */
+.btn-small {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-save {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: var(--primary-hover);
+}

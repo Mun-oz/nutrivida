@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+</head>
+<body class="admin-body"> 
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="icon">Ø</span> NutriVida
+            </div>
+            <hr class="sidebar-divider">
+            <ul class="sidebar-nav">
+                <li onclick="window.location.href='home.html'"><span class="icon">⊞</span> Dashboard</li>
+                <li class="active" onclick="window.location.href='catalogo.html'"><span class="icon">📋</span> Gestión de Catálogos</li>
+                <li onclick="window.location.href='usuario.html'"><span class="icon">👥</span> Gestión de Usuarios</li>
+            </ul>
+            <div class="sidebar-spacer"></div>
+            <ul class="sidebar-nav">
+                <li><span class="icon">⚙️</span> Configuración</li>
+                <li onclick="window.location.href='../index.html'"><span class="icon">🌍</span> Ver sitio web</li>
+                <li onclick="window.location.href='../login.html'"><span class="icon">🚪</span> Cerrar Sesión</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h2>Catálogo de Servicios</h2>
+                <button class="btn-primary" onclick="window.location.href='nuevo_catalogo.html'" style="width: auto; margin-top: 0;">+ Nuevo Servicio</button>
+            </header>
+            
+            <div class="content-panel top-panel">
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre del Servicio</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>Evaluación Nutricional Inicial</td>
+                                <td>$35.000</td>
+                                <td style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-small btn-save" onclick="window.location.href='mostrar_catalogo.html'">Ver Detalles</button>
+                                    <button class="btn-small" style="background-color: #f39c12; color: white;" onclick="window.location.href='editar_catalogo.html'">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Control Nutricional Mensual</td>
+                                <td>$25.000</td>
+                                <td style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-small btn-save" onclick="window.location.href='mostrar_catalogo.html'">Ver Detalles</button>
+                                    <button class="btn-small" style="background-color: #f39c12; color: white;" onclick="window.location.href='editar_catalogo.html'">Editar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    
+    <script src="../assets/JS/script.js"></script>
+</body>
+</html>
