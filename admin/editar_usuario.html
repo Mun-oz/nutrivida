@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+</head>
+<body class="admin-body"> 
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="icon">Ø</span> NutriVida
+            </div>
+            <hr class="sidebar-divider">
+            <ul class="sidebar-nav">
+                <li onclick="window.location.href='home.html'"><span class="icon">⊞</span> Dashboard</li>
+                <li onclick="window.location.href='catalogo.html'"><span class="icon">📋</span> Gestión de Catálogos</li>
+                <li class="active" onclick="window.location.href='usuario.html'"><span class="icon">👥</span> Gestión de Usuarios</li>
+            </ul>
+            <div class="sidebar-spacer"></div>
+            <ul class="sidebar-nav">
+                <li><span class="icon">⚙️</span> Configuración</li>
+                <li onclick="window.location.href='../index.html'"><span class="icon">🌍</span> Ver sitio web</li>
+                <li onclick="window.location.href='../login.html'"><span class="icon">🚪</span> Cerrar Sesión</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h2>Modificar Rol de Usuario</h2>
+            </header>
+            
+            <div class="content-panel top-panel">
+                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); max-width: 600px;">
+                    
+                    <form id="formEditarRol">
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Usuario Seleccionado:</label>
+                            <input type="text" value="Juan Pérez" disabled style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; background: #f0f0f0; color: #666;">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Correo Electrónico:</label>
+                            <input type="email" value="juan.perez@gmail.com" disabled style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; background: #f0f0f0; color: #666;">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="nuevoRol" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Asignar Nuevo Rol:</label>
+                            <select id="nuevoRol" style="width: 100%; padding: 0.8rem; border: 2px solid var(--primary-color); border-radius: 4px; font-size: 1rem; background: white; cursor: pointer;">
+                                <option value="paciente" selected>Paciente</option>
+                                <option value="nutricionista">Nutricionista</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <button type="submit" class="btn-primary" style="flex: 1; margin: 0;">Actualizar Rol</button>
+                            <button type="button" class="btn-outline" style="flex: 1; border: 1px solid var(--border-color); background: transparent; padding: 0.8rem; border-radius: 4px; cursor: pointer; font-weight: bold; color: var(--text-color);" onclick="window.location.href='usuario.html'">Cancelar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+    
+    <script src="../assets/JS/script.js"></script>
+</body>
+</html>
