@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Detalles - Catálogo</title>
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+</head>
+<body class="admin-body"> 
+
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="icon">Ø</span> NutriVida
+            </div>
+            <hr class="sidebar-divider">
+            <ul class="sidebar-nav">
+                <li onclick="window.location.href='home.html'"><span class="icon">⊞</span> Dashboard</li>
+                <li class="active" onclick="window.location.href='catalogo.html'"><span class="icon">📋</span> Gestión de Catálogos</li>
+                <li onclick="window.location.href='usuario.html'"><span class="icon">👥</span> Gestión de Usuarios</li>
+            </ul>
+            <div class="sidebar-spacer"></div>
+            <ul class="sidebar-nav">
+                <li><span class="icon">⚙️</span> Configuración</li>
+                <li onclick="window.location.href='../index.html'"><span class="icon">🌍</span> Ver sitio web</li>
+                <li onclick="window.location.href='../login.html'"><span class="icon">🚪</span> Cerrar Sesión</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h2>Detalles del Servicio Nutricional</h2>
+            </header>
+            
+            <div class="content-panel top-panel">
+                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); max-width: 600px;">
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Código del Servicio:</label>
+                        <input type="text" id="detCodigo" disabled style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; background: #f0f0f0; color: #666;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Nombre del Servicio:</label>
+                        <input type="text" id="detNombreServicio" disabled style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; background: #f0f0f0; color: #666;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-color);">Precio (CLP):</label>
+                        <input type="text" id="detPrecio" disabled style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; background: #f0f0f0; color: #666;">
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <button type="button" class="btn-primary" style="width: 100%; margin: 0;" onclick="window.location.href='catalogo.html'">Volver a Gestión de Catálogos</button>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+    
+    <script src="../assets/JS/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const datosGuardados = localStorage.getItem('catalogoActivo');
+            if (datosGuardados) {
+                const s = JSON.parse(datosGuardados);
+                document.getElementById('detCodigo').value = s.codigo || '';
+                document.getElementById('detNombreServicio').value = s.nombre || '';
+                document.getElementById('detPrecio').value = '$' + Number(s.precio).toLocaleString('es-CL') || '';
+            }
+        });
+    </script>
+</body>
+</html>
