@@ -68,14 +68,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 isValid = false;
             }
 
-            // Si es que falla la validacion, este se limpia y pide ingresar nuevamente
+            // Si hay alguna falla en la validacion, este se limpiará y pidirá ingresar nuevamente
             if (!isValid) {
                 emailInput.value = "";
                 passwordInput.value = "";
                 emailInput.focus();
             } else {
-                alert("¡Inicio de sesión exitoso!");
-                window.location.href = "index.html";
+                // Si el correo es de un administrador/profesor
+                if (emailValue.endsWith('@profesor.duoc.cl')) {
+                    alert("✅ Modo Administrador: Autenticación exitosa. Redirigiendo al Dashboard...");
+                    window.location.href = "admin/home.html";
+                } else {
+                    alert("✅ Modo Paciente: Autenticación exitosa. Bienvenido a Clínica NutriVida.");
+                    window.location.href = "index.html";
+                    }
             }
         });
     }
