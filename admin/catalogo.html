@@ -44,25 +44,8 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>Evaluación Nutricional Inicial</td>
-                                <td>$35.000</td>
-                                <td style="display: flex; gap: 0.5rem;">
-                                    <button class="btn-small btn-save" onclick="window.location.href='mostrar_catalogo.html'">Ver Detalles</button>
-                                    <button class="btn-small" style="background-color: #f39c12; color: white;" onclick="window.location.href='editar_catalogo.html'">Editar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>002</td>
-                                <td>Control Nutricional Mensual</td>
-                                <td>$25.000</td>
-                                <td style="display: flex; gap: 0.5rem;">
-                                    <button class="btn-small btn-save" onclick="window.location.href='mostrar_catalogo.html'">Ver Detalles</button>
-                                    <button class="btn-small" style="background-color: #f39c12; color: white;" onclick="window.location.href='editar_catalogo.html'">Editar</button>
-                                </td>
-                            </tr>
+                        <tbody id="tablaCatalogoBody">
+                            <!-- Aquí se inyectará datos_dinamicos.js -->
                         </tbody>
                     </table>
                 </div>
@@ -72,5 +55,6 @@
     </div>
     
     <script src="../assets/JS/script.js"></script>
+    <script src="../assets/JS/datos_dinamicos.js"></script>
 </body>
 </html>
