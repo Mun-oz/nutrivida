@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
 import App from './App.jsx'
-import './index.css' // Aquí pegaremos tu style.css actual
+import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
