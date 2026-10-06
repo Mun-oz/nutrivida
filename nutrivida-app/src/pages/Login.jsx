@@ -32,9 +32,10 @@ export default function Login() {
   };
 
   return (
-    <section className="auth-card">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit} noValidate>
+    <main className="container">
+      <section className="auth-card">
+        <h2>Iniciar Sesión</h2>
+        <form onSubmit={handleSubmit} noValidate>
         
         <div className="form-group">
           <label>Correo Electrónico</label>
@@ -61,5 +62,6 @@ export default function Login() {
         <button type="submit" className="btn-primary">Ingresar</button>
       </form>
     </section>
+  </main>
   );
 }
