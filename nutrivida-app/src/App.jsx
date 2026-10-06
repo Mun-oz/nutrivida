@@ -7,10 +7,8 @@ import Registro from './pages/Registro'
 import Contacto from './pages/Contacto'
 import Agendar from './pages/Agendar'
 import DashboardAdmin from './pages/admin/DashboardAdmin'
-
-
-function Nosotros() { return <main className="container"><h2 style={{marginTop: '2rem'}}>Nosotros</h2><p>Página en construcción...</p></main> }
-function Blog() { return <main className="container"><h2 style={{marginTop: '2rem'}}>Nuestro Blog</h2><p>Página en construcción...</p></main> }
+import Nosotros from './pages/Nosotros'
+import Blog from './pages/Blog'
 
 function App() {
   return (
