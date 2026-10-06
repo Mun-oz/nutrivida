@@ -9,6 +9,8 @@ import Agendar from './pages/Agendar'
 import DashboardAdmin from './pages/admin/DashboardAdmin'
 import Nosotros from './pages/Nosotros'
 import Blog from './pages/Blog'
+import BlogDetalle1 from './pages/BlogDetalle1'
+import BlogDetalle2 from './pages/BlogDetalle2'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="contacto" element={<Contacto />} />
         <Route path="nosotros" element={<Nosotros />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="blog-detalle-1" element={<BlogDetalle1 />} />
+        <Route path="blog-detalle-2" element={<BlogDetalle2 />} />
         <Route path="agendar" element={<Agendar />} />
       </Route>
       <Route path="admin/home" element={<DashboardAdmin />} />

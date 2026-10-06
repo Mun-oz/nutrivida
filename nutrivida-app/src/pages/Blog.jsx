@@ -1,38 +1,39 @@
 import { Link } from 'react-router';
 
 export default function Blog() {
-  const articulos = [
-    {
-      id: 1,
-      titulo: "5 Mitos sobre la Nutrición Deportiva",
-      resumen: "Descubre la verdad sobre los suplementos, las proteínas y la alimentación antes de entrenar.",
-      fecha: "15 Octubre, 2026"
-    },
-    {
-      id: 2,
-      titulo: "Guía para una Transición Vegana Saludable",
-      resumen: "Pasos fundamentales para cambiar tu alimentación asegurando que no te falten nutrientes esenciales.",
-      fecha: "28 Septiembre, 2026"
-    }
-  ];
-
   return (
-    <main className="container" style={{ flexDirection: 'column', padding: '2rem 1rem' }}>
-      <h2 style={{ textAlign: 'center', color: 'var(--primary-color)', marginBottom: '2rem' }}>Nuestro Blog</h2>
-      
-      <div className="products-grid">
-        {articulos.map(articulo => (
-          <article key={articulo.id} className="product-card-home" style={{ padding: '1.5rem', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <span style={{ fontSize: '0.8rem', color: '#888' }}>{articulo.fecha}</span>
-              <h3 style={{ color: '#333', margin: '0.5rem 0' }}>{articulo.titulo}</h3>
-              <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.5' }}>{articulo.resumen}</p>
+    <main className="container">
+      <div className="blog-wrapper">
+        <section className="blog-header">
+          <h2>CASOS CURIOSOS</h2>
+          <p>Descubre datos curiosos, consejos nutricionales y casos de éxito de nuestra clínica.</p>
+        </section>
+
+        <section className="blog-list">
+          {/* Noticia 1 */}
+          <article className="blog-card">
+            <div className="blog-card-content">
+              <h3>CASO CURIOSO #1: Mitos del Metabolismo y el Agua Helada</h3>
+              <p className="blog-description">¿Es verdad que beber agua con hielo acelera tu metabolismo de forma drástica? Analizamos la evidencia científica detrás de esta creencia popular.</p>
+              <Link to="/blog-detalle-1" className="btn-primary btn-blog">VER CASO</Link>
             </div>
-            <Link to="/blog" className="btn-outline" style={{ display: 'inline-block', marginTop: '1.5rem', textAlign: 'center' }}>
-              Leer artículo
-            </Link>
+            <div className="blog-card-image">
+              <img src="/assets/img/blog1.jpg" alt="Agua y metabolismo" />
+            </div>
           </article>
-        ))}
+
+          {/* Noticia 2 */}
+          <article className="blog-card">
+            <div className="blog-card-content">
+              <h3>CASO CURIOSO #2: La Regla de los 20 Minutos al Comer</h3>
+              <p className="blog-description">Descubre por qué tu cerebro tarda 20 minutos en registrar la saciedad y cómo este simple hábito ayuda a controlar la ingesta sin pasar hambre.</p>
+              <Link to="/blog-detalle-2" className="btn-primary btn-blog">VER CASO</Link>
+            </div>
+            <div className="blog-card-image">
+              <img src="/assets/img/blog2.jpg" alt="Nutrición y hábitos" />
+            </div>
+          </article>
+        </section>
       </div>
     </main>
   );
