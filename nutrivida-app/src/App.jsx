@@ -14,6 +14,12 @@ import BlogDetalle2 from './pages/BlogDetalle2'
 import AdminLayout from './pages/admin/AdminLayout'
 import CatalogoAdmin from './pages/admin/CatalogoAdmin'
 import UsuarioAdmin from './pages/admin/UsuarioAdmin'
+import NuevoCatalogoAdmin from './pages/admin/NuevoCatalogoAdmin'
+import EditarCatalogoAdmin from './pages/admin/EditarCatalogoAdmin'
+import MostrarCatalogoAdmin from './pages/admin/MostrarCatalogoAdmin'
+import NuevoUsuarioAdmin from './pages/admin/NuevoUsuarioAdmin'
+import EditarUsuarioAdmin from './pages/admin/EditarUsuarioAdmin'
+import MostrarUsuarioAdmin from './pages/admin/MostrarUsuarioAdmin'
 
 function App() {
   return (
@@ -30,10 +36,16 @@ function App() {
         <Route path="blog-detalle-2" element={<BlogDetalle2 />} />
         <Route path="agendar" element={<Agendar />} />
       </Route>
-      <Route path="admin" element={<AdminLayout />}>
-        <Route path="home" element={<DashboardAdmin />} />
+        <Route path="admin" element={<AdminLayout />}>
+         <Route path="home" element={<DashboardAdmin />} />
         <Route path="catalogo" element={<CatalogoAdmin />} />
+          <Route path="catalogo/nuevo" element={<NuevoCatalogoAdmin />} />
+          <Route path="catalogo/editar" element={<EditarCatalogoAdmin />} />
+          <Route path="catalogo/mostrar" element={<MostrarCatalogoAdmin />} />
         <Route path="usuario" element={<UsuarioAdmin />} />
+          <Route path="usuario/nuevo" element={<NuevoUsuarioAdmin />} />
+          <Route path="usuario/editar" element={<EditarUsuarioAdmin />} />
+          <Route path="usuario/mostrar" element={<MostrarUsuarioAdmin />} />
       </Route>
     </Routes>
   )
