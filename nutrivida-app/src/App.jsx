@@ -11,6 +11,9 @@ import Nosotros from './pages/Nosotros'
 import Blog from './pages/Blog'
 import BlogDetalle1 from './pages/BlogDetalle1'
 import BlogDetalle2 from './pages/BlogDetalle2'
+import AdminLayout from './pages/admin/AdminLayout'
+import CatalogoAdmin from './pages/admin/CatalogoAdmin'
+import UsuarioAdmin from './pages/admin/UsuarioAdmin'
 
 function App() {
   return (
@@ -27,7 +30,11 @@ function App() {
         <Route path="blog-detalle-2" element={<BlogDetalle2 />} />
         <Route path="agendar" element={<Agendar />} />
       </Route>
-      <Route path="admin/home" element={<DashboardAdmin />} />
+      <Route path="admin" element={<AdminLayout />}>
+        <Route path="home" element={<DashboardAdmin />} />
+        <Route path="catalogo" element={<CatalogoAdmin />} />
+        <Route path="usuario" element={<UsuarioAdmin />} />
+      </Route>
     </Routes>
   )
 }
