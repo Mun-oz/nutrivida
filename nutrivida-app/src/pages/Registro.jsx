@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
+import { validarRut, validarDominioCorreo } from '../utils/validadores';
 
 const datosRegiones = [
   { region: "Región Metropolitana", comunas: ["Santiago", "Providencia", "Maipú"] },
@@ -26,12 +27,35 @@ export default function Registro() {
     }
   };
 
+  // 2. Lógica de validación antes de procesar el registro
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden");
+
+    // Validar formato y dígito verificador del RUN
+    if (!validarRut(formData.run)) {
+      alert("Error: El RUN ingresado no es válido.");
+      return; // El return detiene la ejecución inmediatamente
+    }
+
+    // Validar dominios de correo permitidos
+    if (!validarDominioCorreo(formData.email)) {
+      alert("Error: El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com");
       return;
     }
+
+    // Validar longitud de la contraseña
+    if (formData.password.length < 4 || formData.password.length > 10) {
+      alert("Error: La contraseña debe tener entre 4 y 10 caracteres.");
+      return;
+    }
+
+    // Validar que las contraseñas coincidan
+    if (formData.password !== formData.confirmPassword) {
+      alert("Error: Las contraseñas no coinciden.");
+      return;
+    }
+
+    // Si pasa todas las validaciones, es un éxito
     alert("¡Registro exitoso! Redirigiendo a inicio de sesión.");
     navigate('/login');
   };
