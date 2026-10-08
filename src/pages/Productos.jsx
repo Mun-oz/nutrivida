@@ -20,7 +20,7 @@ const catalogoInicial = [
   { id: "EV003", nombre: "Encuesta de hábitos alimentarios",       duracion: "1 mes", precio: 10000, img: "encuesta.jpg" },
   { id: "EV004", nombre: "Análisis de exámenes de laboratorio",    duracion: "1 mes", precio: 15000, img: "ex_lab.jpg" },
   { id: "TG001", nombre: "Taller de alimentación saludable",       duracion: "1 mes", precio: 15000, img: "ali_salud.jpg" },
-  { id: "TG002", nombre: "Taller de cocina nutritiva",             duracion: "1 mes", precio: 20000, img: "taller_sal.jpg" },
+  { id: "TG002", nombre: "Taller de cocina nutritiva",             duracion: "1 mes", precio: 20000, img: "taller_sal.jpg" }
 ];
 
 export default function Productos() {
