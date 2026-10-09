@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useFetch } from '../../../nutrividaa/src/hooks/useFetch';
-import { SERVICIOS_URL, formatearPrecio, filtrarServicios } from '../../../nutrividaa/src/services/serviciosService';
+import { useFetch } from '../hooks/useFetch';
+import { SERVICIOS_URL, formatearPrecio, filtrarServicios } from '../services/serviciosService';
 
 export default function Productos() {
   const { data: catalogo, loading, error } = useFetch(SERVICIOS_URL);
@@ -9,57 +9,70 @@ export default function Productos() {
   const serviciosFiltrados = filtrarServicios(catalogo, busqueda);
 
   return (
-    <main className="container-home" style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h2 style={{ color: 'var(--primary-color)', fontSize: '2.2rem' }}>Nuestros Servicios Nutricionales</h2>
-        <p style={{ color: '#666', marginTop: '0.5rem' }}>Planes clínicos diseñados por profesionales para tus metas específicas.</p>
+    <main className="container my-5 d-block">
+      <div className="text-center mb-5">
+        <h2 className="text-success fw-bold">Nuestros Servicios Nutricionales</h2>
+        <p className="text-muted">Planes clínicos diseñados por profesionales para tus metas específicas.</p>
         
-        <div style={{ marginTop: '1.5rem', maxWidth: '500px', marginInline: 'auto' }}>
+        <div className="mx-auto" style={{ maxWidth: '500px' }}>
           <input
             type="text"
+            // Clases de formulario nativas de Bootstrap
+            className="form-control rounded-pill border-secondary px-4 py-2"
             placeholder="Buscar por nombre o código (ej: Deportivo, CN001)..."
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '25px', border: '1px solid #ccc', fontSize: '1rem', outline: 'none' }}
           />
         </div>
       </div>
 
       {loading && (
-        <div style={{ textAlign: 'center', padding: '3rem', color: '#666', fontSize: '1.2rem' }}>
+        <div className="text-center p-5 text-muted fs-4">
           Cargando catálogo de servicios...
         </div>
       )}
 
       {error && (
-        <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: '#ffebee', color: '#c62828', borderRadius: '8px' }}>
+        // Usamos el componente de Alerta de Bootstrap
+        <div className="alert alert-danger text-center shadow-sm" role="alert">
           Ocurrió un error al cargar los servicios: {error}
         </div>
       )}
 
       {!loading && !error && (
-        <div className="products-grid">
+        // Grilla responsiva de Bootstrap: 'row' con 'g-4' (gap/espacio entre tarjetas)
+        <div className="row g-4">
           {serviciosFiltrados.length === 0 ? (
-            <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#888' }}>
-              No se encontraron servicios.
-            </p>
+            <div className="col-12 text-center text-muted">
+              No se encontraron servicios que coincidan con tu búsqueda.
+            </div>
           ) : (
             serviciosFiltrados.map((servicio) => (
-              <div key={servicio.id} className="product-card-home" style={{ height: '100%' }}>
-                <img 
-                  src={`/assets/img/${servicio.img}`} 
-                  alt={servicio.nombre} 
-                  className="product-img-real" 
-                />
-                
-                <div className="product-info" style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <p className="attributes" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>{servicio.duracion}</p>
-                  <h4>{servicio.nombre}</h4>
-                  <p className="price" style={{ margin: 'auto 0 1rem 0' }}>{formatearPrecio(servicio.precio)}</p>
+              // En móvil (col-12), en tablet (col-md-6), en PC (col-lg-3 = 4 columnas)
+              <div key={servicio.id} className="col-12 col-md-6 col-lg-3">
+                {/* Componente Card de Bootstrap */}
+                <div className="card h-100 shadow-sm border-0">
+                  <img 
+                    src={`/assets/img/${servicio.img}`} 
+                    className="card-img-top" 
+                    alt={servicio.nombre} 
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
                   
-                  <button className="btn-primary">
-                    Agendar Servicio
-                  </button>
+                  <div className="card-body d-flex flex-column">
+                    <span className="badge bg-light text-secondary mb-2 align-self-start border">
+                      {servicio.duracion}
+                    </span>
+                    <h5 className="card-title fw-bold text-dark">{servicio.nombre}</h5>
+                    <p className="card-text text-success fs-4 fw-bold mt-auto mb-3">
+                      {formatearPrecio(servicio.precio)}
+                    </p>
+                    
+                    {/* Botón de Bootstrap (btn-success combina con el verde de NutriVida) */}
+                    <button className="btn btn-success w-100 fw-bold">
+                      Agendar Servicio
+                    </button>
+                  </div>
                 </div>
               </div>
             ))
