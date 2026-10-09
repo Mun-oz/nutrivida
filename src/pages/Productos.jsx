@@ -1,58 +1,71 @@
 import { useState } from 'react';
-
-// Este arreglo simula los datos en datos_dinamicos.js
-const catalogoInicial = [
-  { id: "CN001", nombre: "Plan Control Metabólico",                duracion: "1 mes", precio: 45000, img: "metabolismo.png" },
-  { id: "CN002", nombre: "Plan Nutrición Deportiva",               duracion: "1 mes", precio: 50000, img: "nutriciondeporte.jpg" },
-  { id: "CN003", nombre: "Plan Transición Vegana",                 duracion: "1 mes", precio: 40000, img: "t_veg.jpg" },
-  { id: "CN004", nombre: "Primera consulta nutricional",           duracion: "1 mes", precio: 35000, img: "consulta_nutri.jpg" },
-  { id: "CN005", nombre: "Control nutricional (seguimiento)",      duracion: "1 mes", precio: 25000, img: "control_nutri_seg.jpg" },
-  { id: "CN006", nombre: "Control nutricional quincenal",          duracion: "1 mes", precio: 22000, img: "control_nutri_seg.jpg" },
-  { id: "CN007", nombre: "Teleconsulta nutricional",               duracion: "1 mes", precio: 20000, img: "tele_nutri.jpg" },
-  { id: "CN008", nombre: "Consulta de urgencia / reagendada",      duracion: "1 mes", precio: 28000, img: "consulta_reag.png" },
-  { id: "PL001", nombre: "Plan pérdida de peso",                   duracion: "1 mes", precio: 65000, img: "perdida_peso.jpg" },
-  { id: "PL002", nombre: "Plan pérdida de peso",                   duracion: "3 mes", precio: 170000, img: "perdida_peso.jpg" },
-  { id: "PL004", nombre: "Plan control diabetes / hipertensión",   duracion: "1 mes", precio: 75000, img: "control_diab.jpg" },
-  { id: "PL005", nombre: "Plan alimentación vegetariana/vegana",   duracion: "1 mes", precio: 68000, img: "t_veg.jpg" },
-  { id: "PL006", nombre: "Plan alimentación infantil (2-12 años)", duracion: "1 mes", precio: 65000, img: "ali_infantil.jpg" },
-  { id: "EV001", nombre: "Antropometría completa",                 duracion: "1 mes", precio: 18000, img: "antropometria.jpg" },
-  { id: "EV002", nombre: "Bioimpedanciometría",                    duracion: "1 mes", precio: 12000, img: "bio.png" },
-  { id: "EV003", nombre: "Encuesta de hábitos alimentarios",       duracion: "1 mes", precio: 10000, img: "encuesta.jpg" },
-  { id: "EV004", nombre: "Análisis de exámenes de laboratorio",    duracion: "1 mes", precio: 15000, img: "ex_lab.jpg" },
-  { id: "TG001", nombre: "Taller de alimentación saludable",       duracion: "1 mes", precio: 15000, img: "ali_salud.jpg" },
-  { id: "TG002", nombre: "Taller de cocina nutritiva",             duracion: "1 mes", precio: 20000, img: "taller_sal.jpg" }
-];
+import { useFetch } from '../../../nutrividaa/src/hooks/useFetch';
+import { SERVICIOS_URL, formatearPrecio, filtrarServicios } from '../../../nutrividaa/src/services/serviciosService';
 
 export default function Productos() {
-  // Se guarda el catálogo en un estado por si luego se necesita filtrarlo o modificarlo
-  const [servicios, setServicios] = useState(catalogoInicial);
+  const { data: catalogo, loading, error } = useFetch(SERVICIOS_URL);
+  const [busqueda, setBusqueda] = useState('');
+
+  const serviciosFiltrados = filtrarServicios(catalogo, busqueda);
 
   return (
-    <main className="container" style={{ flexDirection: 'column' }}>
+    <main className="container-home" style={{ display: 'flex', flexDirection: 'column' }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h2 style={{ color: 'var(--primary-color)' }}>Catálogo de Servicios Clínicos</h2>
+        <h2 style={{ color: 'var(--primary-color)', fontSize: '2.2rem' }}>Nuestros Servicios Nutricionales</h2>
+        <p style={{ color: '#666', marginTop: '0.5rem' }}>Planes clínicos diseñados por profesionales para tus metas específicas.</p>
+        
+        <div style={{ marginTop: '1.5rem', maxWidth: '500px', marginInline: 'auto' }}>
+          <input
+            type="text"
+            placeholder="Buscar por nombre o código (ej: Deportivo, CN001)..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '25px', border: '1px solid #ccc', fontSize: '1rem', outline: 'none' }}
+          />
+        </div>
       </div>
 
-      <div className="products-grid">
-        {/* Aquí se reemplaza el innerHTML por .map() */}
-        {servicios.map((servicio) => (
-          <div key={servicio.id} className="product-card-home">
-            <img src={`/assets/img/${servicio.img}`} alt={servicio.nombre} className="product-img-real" />
-            
-            <div className="product-info">
-              <h4>{servicio.nombre}</h4>
-              <p className="attributes">Duración: {servicio.duracion}</p>
-              
-              {/* Se Formatea el precio automáticamente a pesos chilenos */}
-              <p className="price">
-                ${servicio.precio.toLocaleString('es-CL')} CLP
-              </p>
-              
-              <button className="btn-primary">Agendar Hora</button>
-            </div>
-          </div>
-        ))}
-      </div>
+      {loading && (
+        <div style={{ textAlign: 'center', padding: '3rem', color: '#666', fontSize: '1.2rem' }}>
+          Cargando catálogo de servicios...
+        </div>
+      )}
+
+      {error && (
+        <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: '#ffebee', color: '#c62828', borderRadius: '8px' }}>
+          Ocurrió un error al cargar los servicios: {error}
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className="products-grid">
+          {serviciosFiltrados.length === 0 ? (
+            <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#888' }}>
+              No se encontraron servicios.
+            </p>
+          ) : (
+            serviciosFiltrados.map((servicio) => (
+              <div key={servicio.id} className="product-card-home" style={{ height: '100%' }}>
+                <img 
+                  src={`/assets/img/${servicio.img}`} 
+                  alt={servicio.nombre} 
+                  className="product-img-real" 
+                />
+                
+                <div className="product-info" style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <p className="attributes" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>{servicio.duracion}</p>
+                  <h4>{servicio.nombre}</h4>
+                  <p className="price" style={{ margin: 'auto 0 1rem 0' }}>{formatearPrecio(servicio.precio)}</p>
+                  
+                  <button className="btn-primary">
+                    Agendar Servicio
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
     </main>
   );
 }
