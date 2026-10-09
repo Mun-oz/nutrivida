@@ -4,7 +4,7 @@
   { "id": "CN003", "nombre": "Plan Transición Vegana",                 "duracion": "1 mes", "precio": 40000, "img": "t_veg.jpg" },
   { "id": "CN004", "nombre": "Primera consulta nutricional",           "duracion": "1 mes", "precio": 35000, "img": "consulta_nutri.jpg" },
   { "id": "CN005", "nombre": "Control nutricional (seguimiento)",      "duracion": "1 mes", "precio": 25000, "img": "control_nutri_seg.jpg" },
-  { "id": "CN006", "nombre": "Control nutricional quincenal",          "duracion": "1 mes", "precio": 22000, "img": "control_nutri_seg.jpg" },
+  { "id": "CN006", "nombre": "Control nutricional quincenal",          "duracion": "15 dias", "precio": 22000, "img": "control_nutri_seg.jpg" },
   { "id": "CN007", "nombre": "Teleconsulta nutricional",               "duracion": "1 mes", "precio": 20000, "img": "tele_nutri.jpg" },
   { "id": "CN008", "nombre": "Consulta de urgencia / reagendada",      "duracion": "1 mes", "precio": 28000, "img": "consulta_reag.png" },
   { "id": "PL001", "nombre": "Plan pérdida de peso",                   "duracion": "1 mes", "precio": 65000, "img": "perdida_peso.jpg" },
