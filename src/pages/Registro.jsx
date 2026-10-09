@@ -100,6 +100,11 @@ export default function Registro() {
             </select>
           </div>
 
+          <div className="form-group"> 
+            <label>Dirección:</label> 
+            <input type="text" name="direccion" value={formData.direccion} onChange={handleChange} placeholder="Ej: Av. Libertador 1234" required /> 
+          </div>
+
           <div className="form-group">
             <label>Contraseña:</label>
             <input type="password" name="password" value={formData.password} onChange={handleChange} required />
