@@ -20,6 +20,10 @@ import MostrarCatalogoAdmin from './pages/admin/MostrarCatalogoAdmin'
 import NuevoUsuarioAdmin from './pages/admin/NuevoUsuarioAdmin'
 import EditarUsuarioAdmin from './pages/admin/EditarUsuarioAdmin'
 import MostrarUsuarioAdmin from './pages/admin/MostrarUsuarioAdmin'
+import Gracias from './pages/Gracias'
+
+// 1. Importamos a nuestro guardia de seguridad
+import RequireAuth from './cors/RequireAuth'
 
 function App() {
   return (
@@ -32,20 +36,28 @@ function App() {
         <Route path="contacto" element={<Contacto />} />
         <Route path="nosotros" element={<Nosotros />} />
         <Route path="blog" element={<Blog />} />
-        <Route path="blog-detalle-1" element={<BlogDetalle1 />} />
-        <Route path="blog-detalle-2" element={<BlogDetalle2 />} />
+          <Route path="blog-detalle-1" element={<BlogDetalle1 />} />
+          <Route path="blog-detalle-2" element={<BlogDetalle2 />} />
         <Route path="agendar" element={<Agendar />} />
+          <Route path="agendar" element={<Agendar />} />
+          <Route path="gracias" element={<Gracias />} /> {/* <-- NUEVA RUTA */}
       </Route>
-        <Route path="admin" element={<AdminLayout />}>
-         <Route path="home" element={<DashboardAdmin />} />
+      
+      {/* 2. Envolvemos el AdminLayout con RequireAuth pidiendo rol de admin */}
+      <Route path="admin" element={
+        <RequireAuth requireAdmin={true}>
+          <AdminLayout />
+        </RequireAuth>
+      }>
+        <Route path="home" element={<DashboardAdmin />} />
         <Route path="catalogo" element={<CatalogoAdmin />} />
-          <Route path="catalogo/nuevo" element={<NuevoCatalogoAdmin />} />
-          <Route path="catalogo/editar" element={<EditarCatalogoAdmin />} />
-          <Route path="catalogo/mostrar" element={<MostrarCatalogoAdmin />} />
+        <Route path="catalogo/nuevo" element={<NuevoCatalogoAdmin />} />
+        <Route path="catalogo/editar" element={<EditarCatalogoAdmin />} />
+        <Route path="catalogo/mostrar" element={<MostrarCatalogoAdmin />} />
         <Route path="usuario" element={<UsuarioAdmin />} />
-          <Route path="usuario/nuevo" element={<NuevoUsuarioAdmin />} />
-          <Route path="usuario/editar" element={<EditarUsuarioAdmin />} />
-          <Route path="usuario/mostrar" element={<MostrarUsuarioAdmin />} />
+        <Route path="usuario/nuevo" element={<NuevoUsuarioAdmin />} />
+        <Route path="usuario/editar" element={<EditarUsuarioAdmin />} />
+        <Route path="usuario/mostrar" element={<MostrarUsuarioAdmin />} />
       </Route>
     </Routes>
   )
