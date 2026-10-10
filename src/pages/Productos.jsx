@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
+import { Link } from 'react-router';
 import { SERVICIOS_URL, formatearPrecio, filtrarServicios } from '../services/serviciosService';
 
 export default function Productos() {
@@ -69,9 +70,9 @@ export default function Productos() {
                     </p>
                     
                     {/* Botón de Bootstrap (btn-success combina con el verde de NutriVida) */}
-                    <button className="btn btn-success w-100 fw-bold">
+                    <Link to="/agendar" className="btn btn-success w-100 fw-bold mt-auto">
                       Agendar Servicio
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
