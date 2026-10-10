@@ -13,10 +13,8 @@ export default function NuevoUsuarioAdmin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Leemos la base de datos (si no existe, empezamos con un arreglo vacío)
     const usuariosDb = JSON.parse(localStorage.getItem('nutrivida_usuarios_db')) || [];
     
-    // Creamos el nuevo usuario con un ID único usando la fecha actual
     const nuevoUsuario = {
       id: Date.now(),
       nombre: formData.nombre,
@@ -24,12 +22,11 @@ export default function NuevoUsuarioAdmin() {
       rol: formData.rol
     };
     
-    // Lo guardamos
     usuariosDb.push(nuevoUsuario);
     localStorage.setItem('nutrivida_usuarios_db', JSON.stringify(usuariosDb));
 
-    alert("Usuario guardado exitosamente.");
-    navigate('/admin/usuario');
+    // Redirección inmediata a la tabla con mensaje de éxito
+    navigate('/admin/usuario', { state: { mensaje: 'Usuario creado exitosamente.' } });
   };
 
   return (

@@ -23,8 +23,8 @@ export default function EditarUsuarioAdmin() {
 
     localStorage.setItem('nutrivida_usuarios_db', JSON.stringify(nuevaLista));
 
-    alert("Usuario actualizado exitosamente.");
-    navigate('/admin/usuario');
+    // Redirección inmediata
+    navigate('/admin/usuario', { state: { mensaje: 'Usuario actualizado exitosamente.' } });
   };
 
   return (
