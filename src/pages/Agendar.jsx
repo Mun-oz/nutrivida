@@ -20,10 +20,8 @@ export default function Agendar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("¡Hora agendada con éxito! Te enviaremos el comprobante y el enlace de pago a tu correo.");
-    navigate('/');
+    navigate('/gracias', { state: { tipo: 'reserva' } });
   };
-
   return (
     <main className="container my-5 d-block">
       
