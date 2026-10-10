@@ -1,10 +1,33 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function NuevoUsuarioAdmin() {
   const navigate = useNavigate();
+  
+  const [formData, setFormData] = useState({
+    nombre: '',
+    correo: '',
+    rol: 'Paciente'
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Leemos la base de datos (si no existe, empezamos con un arreglo vacío)
+    const usuariosDb = JSON.parse(localStorage.getItem('nutrivida_usuarios_db')) || [];
+    
+    // Creamos el nuevo usuario con un ID único usando la fecha actual
+    const nuevoUsuario = {
+      id: Date.now(),
+      nombre: formData.nombre,
+      correo: formData.correo,
+      rol: formData.rol
+    };
+    
+    // Lo guardamos
+    usuariosDb.push(nuevoUsuario);
+    localStorage.setItem('nutrivida_usuarios_db', JSON.stringify(usuariosDb));
+
     alert("Usuario guardado exitosamente.");
     navigate('/admin/usuario');
   };
@@ -18,22 +41,23 @@ export default function NuevoUsuarioAdmin() {
       <div className="content-panel top-panel">
         <div style={{ background: '#ffffff', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', maxWidth: '600px' }}>
           <form onSubmit={handleSubmit}>
+            
             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
               <label htmlFor="nombreUsuario" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Nombre Completo:</label>
-              <input type="text" id="nombreUsuario" placeholder="Ej. Ana Soto" required style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem' }} />
+              <input type="text" id="nombreUsuario" placeholder="Ej. Ana Soto" value={formData.nombre} onChange={(e) => setFormData({...formData, nombre: e.target.value})} required style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem' }} />
             </div>
 
             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
               <label htmlFor="emailUsuario" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Correo Electrónico:</label>
-              <input type="email" id="emailUsuario" placeholder="ana.soto@correo.cl" required style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem' }} />
+              <input type="email" id="emailUsuario" placeholder="ana.soto@correo.cl" value={formData.correo} onChange={(e) => setFormData({...formData, correo: e.target.value})} required style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem' }} />
             </div>
 
             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
               <label htmlFor="rolUsuario" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Asignar Rol:</label>
-              <select id="rolUsuario" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: 'white' }}>
-                <option value="paciente">Paciente</option>
-                <option value="nutricionista">Nutricionista</option>
-                <option value="admin">Administrador</option>
+              <select id="rolUsuario" value={formData.rol} onChange={(e) => setFormData({...formData, rol: e.target.value})} style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: 'white' }}>
+                <option value="Paciente">Paciente</option>
+                <option value="Nutricionista">Nutricionista</option>
+                <option value="Administrador">Administrador</option>
               </select>
             </div>
 

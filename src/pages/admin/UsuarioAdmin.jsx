@@ -1,12 +1,23 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function UsuarioAdmin() {
   const navigate = useNavigate();
-  
-  const usuarios = [
-    { nombre: "Juan Pérez", correo: "juan.perez@gmail.com", rol: "Paciente" },
-    { nombre: "Ana Soto", correo: "ana.soto@correo.cl", rol: "Nutricionista" }
-  ];
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    const datosGuardados = JSON.parse(localStorage.getItem('nutrivida_usuarios_db'));
+    if (datosGuardados && datosGuardados.length > 0) {
+      setUsuarios(datosGuardados);
+    } else {
+      const datosIniciales = [
+        { id: 1, nombre: "Juan Pérez", correo: "juan.perez@gmail.com", rol: "Paciente" },
+        { id: 2, nombre: "Ana Soto", correo: "ana.soto@correo.cl", rol: "Nutricionista" }
+      ];
+      setUsuarios(datosIniciales);
+      localStorage.setItem('nutrivida_usuarios_db', JSON.stringify(datosIniciales));
+    }
+  }, []);
 
   return (
     <>
@@ -27,14 +38,28 @@ export default function UsuarioAdmin() {
               </tr>
             </thead>
             <tbody>
-              {usuarios.map((u, index) => (
-                <tr key={index}>
+              {usuarios.map((u) => (
+                <tr key={u.id}>
                   <td>{u.nombre}</td>
                   <td>{u.correo}</td>
                   <td>{u.rol}</td>
                   <td>
-                    <button className="btn-outline" style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem' }} onClick={() => navigate('/admin/usuario/mostrar')}>Ver</button>
-                    <button className="btn-primary" style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', marginLeft: '0.5rem', marginTop: 0 }} onClick={() => navigate('/admin/usuario/editar')}>Editar</button>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                      <button 
+                        className="btn-outline" 
+                        style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} 
+                        onClick={() => navigate('/admin/usuario/mostrar', { state: { usuario: u } })}
+                      >
+                        Ver
+                      </button>
+                      <button 
+                        className="btn-primary" 
+                        style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} 
+                        onClick={() => navigate('/admin/usuario/editar', { state: { usuario: u } })}
+                      >
+                        Editar
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
