@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { validarRut, validarDominioCorreo } from '../../../nutrividaa/src/utils/validadores';
+import { validarRut, validarDominioCorreo } from './validadores';
 
 describe('Pruebas sobre validadores.js', () => {
 

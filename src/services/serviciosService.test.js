@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatearPrecio, filtrarServicios, obtenerServicioPorId } from '../../../nutrividaa/src/services/serviciosService';
+import { formatearPrecio, filtrarServicios, obtenerServicioPorId } from './serviciosService';
 
 describe('Pruebas sobre serviciosService', () => {
   

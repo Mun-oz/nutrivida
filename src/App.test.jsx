@@ -1,7 +1,7 @@
 import { render, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { MemoryRouter } from 'react-router';
-import App from '../../nutrividaa/src/App';
+import App from './App';
 
 // Simula la API fetch
 global.fetch = vi.fn(() =>
