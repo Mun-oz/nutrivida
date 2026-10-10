@@ -1,20 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 
 export default function Login() {
-  // Declaramos las variables de estado en lugar de usar variables normales
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   
-  // Hook de React Router para redirigir, reemplaza a window.location.href
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que la página recargue
     setErrorEmail('');
 
-    // Validación de dominios
     const allowedDomains = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
     const hasValidDomain = allowedDomains.some(domain => email.endsWith(domain));
 
@@ -23,7 +20,6 @@ export default function Login() {
       return; // Detiene la ejecución si hay error
     }
 
-    // Redirección basada en roles
     if (email.endsWith('@profesor.duoc.cl')) {
       navigate('/admin/home');
     } else {
@@ -33,38 +29,67 @@ export default function Login() {
 
   return (
     <main className="container d-block my-5">
-      <section className="auth-card mx-auto">
-        <h2 className="text-center">Iniciar Sesión</h2>
-        <form onSubmit={handleSubmit} noValidate>
-        
-        <div className="form-group">
-          {/* Conexión técnica: htmlFor coincide con id */}
-          <label htmlFor="emailLogin">Correo Electrónico</label>
-          <input 
-            id="emailLogin"
-            type="email" 
-            className="form-control"
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            placeholder="ejemplo@gmail.com" 
-          />
-          {errorEmail && <span className="error-message">{errorEmail}</span>}
-        </div>
+      <div className="row justify-content-center">
+        <div className="col-lg-10">
+          <div className="card shadow-lg border-0 overflow-hidden rounded-4">
+            <div className="row g-0">
+              
+              {/* Mitad Izquierda: Imagen decorativa (Se oculta en celulares) */}
+              <div className="col-md-6 d-none d-md-block bg-light">
+                <img 
+                  src="/assets/img/Logo_NutriVida.png" 
+                  alt="Login NutriVida" 
+                  className="img-fluid w-100 h-100" 
+                  style={{ objectFit: 'cover', minHeight: '500px' }} 
+                />
+              </div>
 
-        <div className="form-group mt-3">
-          <label htmlFor="passwordLogin">Contraseña</label>
-          <input 
-            id="passwordLogin"
-            type="password" 
-            className="form-control"
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-          />
-        </div>
+              {/* Mitad Derecha: Formulario de Login */}
+              <div className="col-md-6 p-5 d-flex flex-column justify-content-center bg-white">
+                <div className="text-center mb-4">
+                  <h2 className="text-success fw-bold">Iniciar Sesión</h2>
+                  <p className="text-muted">Bienvenido de vuelta a NutriVida</p>
+                </div>
 
-        <button type="submit" className="btn btn-success w-100 mt-4 fw-bold">Ingresar</button>
-      </form>
-    </section>
-  </main>
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="form-group mb-3">
+                    <label htmlFor="emailLogin" className="fw-bold mb-1">Correo Electrónico</label>
+                    <input 
+                      id="emailLogin"
+                      type="email" 
+                      className="form-control p-2"
+                      value={email} 
+                      onChange={(e) => setEmail(e.target.value)} 
+                      placeholder="ejemplo@gmail.com" 
+                    />
+                    {errorEmail && <span className="text-danger small mt-1 d-block fw-bold">{errorEmail}</span>}
+                  </div>
+
+                  <div className="form-group mb-4">
+                    <label htmlFor="passwordLogin" className="fw-bold mb-1">Contraseña</label>
+                    <input 
+                      id="passwordLogin"
+                      type="password" 
+                      className="form-control p-2"
+                      value={password} 
+                      onChange={(e) => setPassword(e.target.value)} 
+                    />
+                  </div>
+
+                  <button type="submit" className="btn btn-success w-100 fw-bold py-2 shadow-sm">Ingresar</button>
+                </form>
+
+                <div className="text-center mt-4">
+                  <p className="text-muted small">
+                    ¿No tienes una cuenta? <Link to="/registro" className="text-success text-decoration-none fw-bold">Regístrate aquí</Link>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
