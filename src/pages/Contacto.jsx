@@ -1,13 +1,23 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 export default function Contacto() {
-  const [mensaje, setMensaje] = useState({ nombre: '', email: '', telefono: '', asunto: '', texto: '' });
+  const navigate = useNavigate();
+  
+  // ¡Faltaba declarar esta variable para que el formulario funcione!
+  const [mensaje, setMensaje] = useState({
+    nombre: '',
+    telefono: '',
+    email: '',
+    asunto: '',
+    texto: ''
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.");
-    setMensaje({ nombre: '', email: '', telefono: '', asunto: '', texto: '' });
-  };
+      e.preventDefault();
+      // Le avisamos a la página de gracias que venimos desde el formulario de contacto
+      navigate('/gracias', { state: { tipo: 'contacto' } });
+    };
 
   return (
     <main className="container my-5 d-block">
