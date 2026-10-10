@@ -61,28 +61,28 @@ export default function Registro() {
   };
 
   return (
-    <main className="container">
-      <section className="auth-card">
-        <h2>Crear Cuenta</h2>
+    <main className="container d-block my-5">
+      <section className="auth-card mx-auto" style={{ maxWidth: '500px' }}>
+        <h2 className="text-center mb-4">Crear Cuenta</h2>
         <form onSubmit={handleSubmit} noValidate>
-          <div className="form-group">
-            <label>RUN (Sin puntos ni guion):</label>
-            <input type="text" name="run" value={formData.run} onChange={handleChange} maxLength="9" required />
+          <div className="form-group mb-3">
+            <label htmlFor="run">RUN (Sin puntos ni guion):</label>
+            <input id="run" type="text" name="run" className="form-control" value={formData.run} onChange={handleChange} maxLength="9" required />
           </div>
           
-          <div className="form-group">
-            <label>Nombre Completo:</label>
-            <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
+          <div className="form-group mb-3">
+            <label htmlFor="nombre">Nombre Completo:</label>
+            <input id="nombre" type="text" name="nombre" className="form-control" value={formData.nombre} onChange={handleChange} required />
           </div>
 
-          <div className="form-group">
-            <label>Correo Electrónico:</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          <div className="form-group mb-3">
+            <label htmlFor="emailRegistro">Correo Electrónico:</label>
+            <input id="emailRegistro" type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
           </div>
 
-          <div className="form-group">
-            <label>Región:</label>
-            <select name="region" value={formData.region} onChange={handleChange} required>
+          <div className="form-group mb-3">
+            <label htmlFor="region">Región:</label>
+            <select id="region" name="region" className="form-select" value={formData.region} onChange={handleChange} required>
               <option value="">Seleccione una región</option>
               {datosRegiones.map(r => (
                 <option key={r.region} value={r.region}>{r.region}</option>
@@ -90,9 +90,9 @@ export default function Registro() {
             </select>
           </div>
 
-          <div className="form-group">
-            <label>Comuna:</label>
-            <select name="comuna" value={formData.comuna} onChange={handleChange} disabled={!formData.region} required>
+          <div className="form-group mb-3">
+            <label htmlFor="comuna">Comuna:</label>
+            <select id="comuna" name="comuna" className="form-select" value={formData.comuna} onChange={handleChange} disabled={!formData.region} required>
               <option value="">Seleccione una comuna</option>
               {comunasDisponibles.map(c => (
                 <option key={c} value={c}>{c}</option>
@@ -100,24 +100,24 @@ export default function Registro() {
             </select>
           </div>
 
-          <div className="form-group"> 
-            <label>Dirección:</label> 
-            <input type="text" name="direccion" value={formData.direccion} onChange={handleChange} placeholder="Ej: Av. Libertador 1234" required /> 
+          <div className="form-group mb-3"> 
+            <label htmlFor="direccion">Dirección:</label> 
+            <input id="direccion" type="text" name="direccion" className="form-control" value={formData.direccion} onChange={handleChange} placeholder="Ej: Av. Libertador 1234" required /> 
           </div>
 
-          <div className="form-group">
-            <label>Contraseña:</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          <div className="form-group mb-3">
+            <label htmlFor="passwordRegistro">Contraseña:</label>
+            <input id="passwordRegistro" type="password" name="password" className="form-control" value={formData.password} onChange={handleChange} required />
           </div>
 
-          <div className="form-group">
-            <label>Confirmar Contraseña:</label>
-            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
+          <div className="form-group mb-4">
+            <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
+            <input id="confirmPassword" type="password" name="confirmPassword" className="form-control" value={formData.confirmPassword} onChange={handleChange} required />
           </div>
 
-          <button type="submit" className="btn-primary">Registrarse</button>
+          <button type="submit" className="btn btn-success w-100 fw-bold">Registrarse</button>
         </form>
-        <p className="auth-redirect">¿Ya tienes una cuenta? <Link to="/login">Inicia sesión aquí</Link></p>
+        <p className="auth-redirect mt-3 text-center">¿Ya tienes una cuenta? <Link to="/login">Inicia sesión aquí</Link></p>
       </section>
     </main>
   );

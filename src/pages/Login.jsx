@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function Login() {
-  // 1. Declaramos las variables de estado en lugar de usar variables normales
+  // Declaramos las variables de estado en lugar de usar variables normales
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
@@ -32,34 +32,37 @@ export default function Login() {
   };
 
   return (
-    <main className="container">
-      <section className="auth-card">
-        <h2>Iniciar Sesión</h2>
+    <main className="container d-block my-5">
+      <section className="auth-card mx-auto">
+        <h2 className="text-center">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit} noValidate>
         
         <div className="form-group">
-          <label>Correo Electrónico</label>
-          {/* value se conecta al estado y onChange lo actualiza en cada tecleo */}
+          {/* Conexión técnica: htmlFor coincide con id */}
+          <label htmlFor="emailLogin">Correo Electrónico</label>
           <input 
+            id="emailLogin"
             type="email" 
+            className="form-control"
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             placeholder="ejemplo@gmail.com" 
           />
-          {/* Renderizado condicional: solo se muestra el span si errorEmail tiene texto */}
           {errorEmail && <span className="error-message">{errorEmail}</span>}
         </div>
 
-        <div className="form-group">
-          <label>Contraseña</label>
+        <div className="form-group mt-3">
+          <label htmlFor="passwordLogin">Contraseña</label>
           <input 
+            id="passwordLogin"
             type="password" 
+            className="form-control"
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
           />
         </div>
 
-        <button type="submit" className="btn-primary">Ingresar</button>
+        <button type="submit" className="btn btn-success w-100 mt-4 fw-bold">Ingresar</button>
       </form>
     </section>
   </main>
