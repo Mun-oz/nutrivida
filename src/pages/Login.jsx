@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
+import { useAuth } from '../context/AuthContext'; 
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -7,6 +8,7 @@ export default function Login() {
   const [errorEmail, setErrorEmail] = useState('');
   
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que la página recargue
@@ -20,7 +22,17 @@ export default function Login() {
       return; // Detiene la ejecución si hay error
     }
 
-    if (email.endsWith('@profesor.duoc.cl')) {
+    // Definimos si es administrador o paciente basándonos en el correo
+    const isAdmin = email.endsWith('@profesor.duoc.cl');
+    
+    // Guardamos al usuario en el contexto (y por ende en LocalStorage)
+    login({
+      email: email,
+      rol: isAdmin ? 'admin' : 'paciente'
+    });
+
+    // Redirigimos según su rol
+    if (isAdmin) {
       navigate('/admin/home');
     } else {
       navigate('/');
