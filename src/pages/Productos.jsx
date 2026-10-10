@@ -69,9 +69,13 @@ export default function Productos() {
                       {formatearPrecio(servicio.precio)}
                     </p>
                     
-                    {/* Botón de Bootstrap (btn-success combina con el verde de NutriVida) */}
-                    <Link to="/agendar" className="btn btn-success w-100 fw-bold mt-auto">
-                      Agendar Servicio
+                    {/* Corrección: ahora usa servicio.nombre */}
+                    <Link 
+                        to="/agendar" 
+                        state={{ servicioSeleccionado: servicio.nombre }} 
+                        className="btn btn-success w-100 fw-bold mt-auto"
+                    >
+                        Agendar Servicio
                     </Link>
                   </div>
                 </div>
