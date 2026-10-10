@@ -21,6 +21,9 @@ import NuevoUsuarioAdmin from './pages/admin/NuevoUsuarioAdmin'
 import EditarUsuarioAdmin from './pages/admin/EditarUsuarioAdmin'
 import MostrarUsuarioAdmin from './pages/admin/MostrarUsuarioAdmin'
 import Gracias from './pages/Gracias'
+import CitasAdmin from './pages/admin/CitasAdmin'
+import ReportesAdmin from './pages/admin/ReportesAdmin'
+import PerfilAdmin from './pages/admin/PerfilAdmin'
 
 // 1. Importamos a nuestro guardia de seguridad
 import RequireAuth from './cors/RequireAuth'
@@ -50,6 +53,7 @@ function App() {
         </RequireAuth>
       }>
         <Route path="home" element={<DashboardAdmin />} />
+        <Route path="citas" element={<CitasAdmin />} />
         <Route path="catalogo" element={<CatalogoAdmin />} />
         <Route path="catalogo/nuevo" element={<NuevoCatalogoAdmin />} />
         <Route path="catalogo/editar" element={<EditarCatalogoAdmin />} />
@@ -58,6 +62,8 @@ function App() {
         <Route path="usuario/nuevo" element={<NuevoUsuarioAdmin />} />
         <Route path="usuario/editar" element={<EditarUsuarioAdmin />} />
         <Route path="usuario/mostrar" element={<MostrarUsuarioAdmin />} />
+        <Route path="reportes" element={<ReportesAdmin />} />
+        <Route path="perfil" element={<PerfilAdmin />} />
       </Route>
     </Routes>
   )
