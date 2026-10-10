@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 
 export default function CatalogoAdmin() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [servicios, setServicios] = useState([]);
+  
+  const [notificacion, setNotificacion] = useState(location.state?.mensaje || null);
+
+  useEffect(() => {
+    if (notificacion) {
+      window.history.replaceState({}, ''); 
+      const timer = setTimeout(() => setNotificacion(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notificacion]);
 
   useEffect(() => {
     const datosGuardados = JSON.parse(localStorage.getItem('nutrivida_catalogo_db'));
@@ -11,8 +22,8 @@ export default function CatalogoAdmin() {
       setServicios(datosGuardados);
     } else {
       const datosIniciales = [
-        { id: "CN001", nombre: "Plan Control Metabólico", descripcion: "Análisis completo de composición corporal y pauta inicial.", precio: 45000, imagen: "" },
-        { id: "CN002", nombre: "Plan Nutrición Deportiva", descripcion: "Enfoque en rendimiento físico y aumento de masa muscular.", precio: 50000, imagen: "" }
+        { id: "CN001", nombre: "Plan Control Metabólico", descripcion: "Análisis corporal y pauta.", precio: 45000, imagen: "" },
+        { id: "CN002", nombre: "Plan Nutrición Deportiva", descripcion: "Enfoque en rendimiento físico.", precio: 50000, imagen: "" }
       ];
       setServicios(datosIniciales);
       localStorage.setItem('nutrivida_catalogo_db', JSON.stringify(datosIniciales));
@@ -26,7 +37,14 @@ export default function CatalogoAdmin() {
         <button className="btn-primary" onClick={() => navigate('/admin/catalogo/nuevo')} style={{ width: 'auto', marginTop: 0 }}>+ Nuevo Servicio</button>
       </header>
       
-      <div className="content-panel top-panel">
+      {/* BANNER DE ÉXITO */}
+      {notificacion && (
+        <div style={{ background: '#e8f5e9', color: '#2e7d32', padding: '1rem', borderRadius: '8px', margin: '0 0 1.5rem 0', border: '1px solid #a5d6a7', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span>✅</span> {notificacion}
+        </div>
+      )}
+
+      <div className="content-panel top-panel" style={{ marginTop: 0 }}>
         <div className="table-responsive">
           <table className="admin-table">
             <thead>
@@ -44,22 +62,9 @@ export default function CatalogoAdmin() {
                   <td>{s.nombre}</td>
                   <td>${Number(s.precio).toLocaleString('es-CL')}</td>
                   <td>
-                    {/* Contenedor flex para arreglar los botones grandes */}
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                      <button 
-                        className="btn-outline" 
-                        style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} 
-                        onClick={() => navigate('/admin/catalogo/mostrar', { state: { servicio: s } })}
-                      >
-                        Ver
-                      </button>
-                      <button 
-                        className="btn-primary" 
-                        style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} 
-                        onClick={() => navigate('/admin/catalogo/editar', { state: { servicio: s } })}
-                      >
-                        Editar
-                      </button>
+                      <button className="btn-outline" style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} onClick={() => navigate('/admin/catalogo/mostrar', { state: { servicio: s } })}>Ver</button>
+                      <button className="btn-primary" style={{ padding: '0.3rem 0.8rem', fontSize: '0.9rem', width: 'auto', margin: 0, borderRadius: '4px', cursor: 'pointer' }} onClick={() => navigate('/admin/catalogo/editar', { state: { servicio: s } })}>Editar</button>
                     </div>
                   </td>
                 </tr>

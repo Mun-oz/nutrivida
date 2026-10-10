@@ -21,8 +21,8 @@ export default function EditarCatalogoAdmin() {
 
     localStorage.setItem('nutrivida_catalogo_db', JSON.stringify(nuevaLista));
 
-    alert("Servicio actualizado exitosamente.");
-    navigate('/admin/catalogo');
+    // Redirección inmediata
+    navigate('/admin/catalogo', { state: { mensaje: 'Servicio actualizado correctamente.' } });
   };
 
   return (

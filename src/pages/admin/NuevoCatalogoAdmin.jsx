@@ -24,8 +24,8 @@ export default function NuevoCatalogoAdmin() {
     catalogoDb.push(nuevoServicio);
     localStorage.setItem('nutrivida_catalogo_db', JSON.stringify(catalogoDb));
 
-    alert("Servicio guardado exitosamente.");
-    navigate('/admin/catalogo');
+    // Redirección inmediata
+    navigate('/admin/catalogo', { state: { mensaje: 'Servicio registrado correctamente.' } });
   };
 
   return (
