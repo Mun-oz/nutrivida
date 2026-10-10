@@ -34,13 +34,10 @@ export default function Header() {
           </ul>
         </nav>
         
-        {/* Añadimos ms-md-4 para separar el bloque de botones del menú principal en PC */}
         <div className="header-actions d-flex flex-column flex-md-row align-items-center mt-4 mt-md-0 ms-md-4">
-          <Link to="/login" onClick={() => setIsMenuOpen(false)}>Iniciar sesión</Link>
-          
-          <span className="mx-2 d-none d-md-inline">|</span>
-          
-          <Link to="/registro" className="mt-2 mt-md-0" onClick={() => setIsMenuOpen(false)}>Registrar usuario</Link>
+          <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+            Iniciar sesión
+          </Link>
         </div>
       </div>
     </header>
