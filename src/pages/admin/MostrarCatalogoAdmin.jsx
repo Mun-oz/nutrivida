@@ -1,7 +1,11 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation, Navigate } from 'react-router';
 
 export default function MostrarCatalogoAdmin() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const servicio = location.state?.servicio;
+
+  if (!servicio) return <Navigate to="/admin/catalogo" replace />;
 
   return (
     <>
@@ -14,17 +18,22 @@ export default function MostrarCatalogoAdmin() {
           
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Código del Servicio:</label>
-            <input type="text" value="CN001" disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
+            <input type="text" value={servicio.id} disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Nombre del Servicio:</label>
-            <input type="text" value="Plan Control Metabólico" disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
+            <input type="text" value={servicio.nombre} disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Descripción:</label>
+            <textarea value={servicio.descripcion} disabled rows="3" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666', resize: 'vertical' }}></textarea>
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>Precio (CLP):</label>
-            <input type="text" value="$45.000" disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
+            <input type="text" value={`$${Number(servicio.precio).toLocaleString('es-CL')}`} disabled style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontSize: '1rem', background: '#f0f0f0', color: '#666' }} />
           </div>
 
           <div style={{ marginTop: '2rem' }}>
