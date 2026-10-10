@@ -12,7 +12,6 @@ export default function Header() {
     <header>
       <div className="logo">
         <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-          {/* Agregamos m-0 para anular el margen que inyecta Bootstrap */}
           <h1 className="m-0">NutriVida</h1>
         </Link>
       </div>
@@ -25,8 +24,8 @@ export default function Header() {
 
       <div className={`nav-container ${isMenuOpen ? 'show' : ''}`}>
         <nav>
-          {/* Agregamos m-0, p-0 y alineación vertical para domar la lista */}
-          <ul className="m-0 p-0 d-flex align-items-center">
+          {/* Cambiamos gap-md-0 por gap-md-4 para darles espacio en pantallas grandes */}
+          <ul className="m-0 p-0 d-flex flex-column flex-md-row align-items-center gap-3 gap-md-4">
             <li><NavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink></li>
             <li><NavLink to="/productos" onClick={() => setIsMenuOpen(false)}>Productos</NavLink></li>
             <li><NavLink to="/nosotros" onClick={() => setIsMenuOpen(false)}>Nosotros</NavLink></li>
@@ -34,11 +33,14 @@ export default function Header() {
             <li><NavLink to="/contacto" onClick={() => setIsMenuOpen(false)}>Contacto</NavLink></li>
           </ul>
         </nav>
-        {/* Aseguramos que los enlaces de la derecha también se centren verticalmente */}
-        <div className="header-actions d-flex align-items-center">
+        
+        {/* Añadimos ms-md-4 para separar el bloque de botones del menú principal en PC */}
+        <div className="header-actions d-flex flex-column flex-md-row align-items-center mt-4 mt-md-0 ms-md-4">
           <Link to="/login" onClick={() => setIsMenuOpen(false)}>Iniciar sesión</Link>
-          <span className="mx-2">|</span>
-          <Link to="/registro" onClick={() => setIsMenuOpen(false)}>Registrar usuario</Link>
+          
+          <span className="mx-2 d-none d-md-inline">|</span>
+          
+          <Link to="/registro" className="mt-2 mt-md-0" onClick={() => setIsMenuOpen(false)}>Registrar usuario</Link>
         </div>
       </div>
     </header>
