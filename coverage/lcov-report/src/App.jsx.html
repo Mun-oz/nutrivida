@@ -116,7 +116,32 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,6 +194,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Routes, Route } from 'react-router'
 import Layout from './cors/Layout'
 import Home from './pages/Home'
@@ -191,6 +227,13 @@ import MostrarCatalogoAdmin from './pages/admin/MostrarCatalogoAdmin'
 import NuevoUsuarioAdmin from './pages/admin/NuevoUsuarioAdmin'
 import EditarUsuarioAdmin from './pages/admin/EditarUsuarioAdmin'
 import MostrarUsuarioAdmin from './pages/admin/MostrarUsuarioAdmin'
+import Gracias from './pages/Gracias'
+import CitasAdmin from './pages/admin/CitasAdmin'
+import ReportesAdmin from './pages/admin/ReportesAdmin'
+import PerfilAdmin from './pages/admin/PerfilAdmin'
+&nbsp;
+// 1. Importamos a nuestro guardia de seguridad
+import RequireAuth from './cors/RequireAuth'
 &nbsp;
 function App() {
   return (
@@ -203,20 +246,31 @@ function App() {
         &lt;Route path="contacto" element={&lt;Contacto /&gt;} /&gt;
         &lt;Route path="nosotros" element={&lt;Nosotros /&gt;} /&gt;
         &lt;Route path="blog" element={&lt;Blog /&gt;} /&gt;
-        &lt;Route path="blog-detalle-1" element={&lt;BlogDetalle1 /&gt;} /&gt;
-        &lt;Route path="blog-detalle-2" element={&lt;BlogDetalle2 /&gt;} /&gt;
+          &lt;Route path="blog-detalle-1" element={&lt;BlogDetalle1 /&gt;} /&gt;
+          &lt;Route path="blog-detalle-2" element={&lt;BlogDetalle2 /&gt;} /&gt;
         &lt;Route path="agendar" element={&lt;Agendar /&gt;} /&gt;
+          &lt;Route path="agendar" element={&lt;Agendar /&gt;} /&gt;
+          &lt;Route path="gracias" element={&lt;Gracias /&gt;} /&gt; {/* &lt;-- NUEVA RUTA */}
       &lt;/Route&gt;
-        &lt;Route path="admin" element={&lt;AdminLayout /&gt;}&gt;
-         &lt;Route path="home" element={&lt;DashboardAdmin /&gt;} /&gt;
+      
+      {/* 2. Envolvemos el AdminLayout con RequireAuth pidiendo rol de admin */}
+      &lt;Route path="admin" element={
+        &lt;RequireAuth requireAdmin={true}&gt;
+          &lt;AdminLayout /&gt;
+        &lt;/RequireAuth&gt;
+      }&gt;
+        &lt;Route path="home" element={&lt;DashboardAdmin /&gt;} /&gt;
+        &lt;Route path="citas" element={&lt;CitasAdmin /&gt;} /&gt;
         &lt;Route path="catalogo" element={&lt;CatalogoAdmin /&gt;} /&gt;
-          &lt;Route path="catalogo/nuevo" element={&lt;NuevoCatalogoAdmin /&gt;} /&gt;
-          &lt;Route path="catalogo/editar" element={&lt;EditarCatalogoAdmin /&gt;} /&gt;
-          &lt;Route path="catalogo/mostrar" element={&lt;MostrarCatalogoAdmin /&gt;} /&gt;
+        &lt;Route path="catalogo/nuevo" element={&lt;NuevoCatalogoAdmin /&gt;} /&gt;
+        &lt;Route path="catalogo/editar" element={&lt;EditarCatalogoAdmin /&gt;} /&gt;
+        &lt;Route path="catalogo/mostrar" element={&lt;MostrarCatalogoAdmin /&gt;} /&gt;
         &lt;Route path="usuario" element={&lt;UsuarioAdmin /&gt;} /&gt;
-          &lt;Route path="usuario/nuevo" element={&lt;NuevoUsuarioAdmin /&gt;} /&gt;
-          &lt;Route path="usuario/editar" element={&lt;EditarUsuarioAdmin /&gt;} /&gt;
-          &lt;Route path="usuario/mostrar" element={&lt;MostrarUsuarioAdmin /&gt;} /&gt;
+        &lt;Route path="usuario/nuevo" element={&lt;NuevoUsuarioAdmin /&gt;} /&gt;
+        &lt;Route path="usuario/editar" element={&lt;EditarUsuarioAdmin /&gt;} /&gt;
+        &lt;Route path="usuario/mostrar" element={&lt;MostrarUsuarioAdmin /&gt;} /&gt;
+        &lt;Route path="reportes" element={&lt;ReportesAdmin /&gt;} /&gt;
+        &lt;Route path="perfil" element={&lt;PerfilAdmin /&gt;} /&gt;
       &lt;/Route&gt;
     &lt;/Routes&gt;
   )
@@ -229,7 +283,7 @@ export default App</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-10T13:26:09.837Z
+                at 2026-10-11T00:48:51.541Z
             </div>
         <script src="../prettify.js"></script>
         <script>

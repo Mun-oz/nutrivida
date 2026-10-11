@@ -77,8 +77,50 @@
 <a name='L12'></a><a href='#L12'>12</a>
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -93,15 +135,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default function Footer() {
   return (
-    &lt;footer className="main-footer"&gt;
-      &lt;div className="footer-info"&gt;
-        &lt;p&gt;
-          📍 Ubicación: &lt;a href="https://www.google.com/maps/search/?api=1&amp;query=Temuco,+Región+de+La+Araucanía" target="_blank" rel="noopener noreferrer" className="map-link"&gt;Temuco, Región de La Araucanía&lt;/a&gt;
-        &lt;/p&gt;
-        &lt;p&gt;📧 Correo: contacto@nutrivida.cl&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div className="footer-copyright"&gt;
-        &lt;p&gt;&amp;copy; 2026 NutriVida - Clínica Nutricional. Todos los derechos reservados.&lt;/p&gt;
+    // Reducimos el padding vertical a py-3 para hacerlo más delgado
+    &lt;footer className="bg-dark text-white py-3 mt-auto w-100 d-block"&gt;
+      {/* Usamos container-fluid con px-5 para que ocupe todo el ancho pero con margen a los bordes */}
+      &lt;div className="container-fluid px-4 px-lg-5"&gt;
+        &lt;div className="row align-items-center text-center text-md-start"&gt;
+          
+          {/* Columna Izquierda: Logo y contacto, alineados a la izquierda */}
+          &lt;div className="col-md-4 mb-2 mb-md-0 d-flex flex-column justify-content-center"&gt;
+            &lt;h5 className="text-success fw-bold m-0 mb-1"&gt;NutriVida&lt;/h5&gt;
+            &lt;small className="text-white-50 lh-sm"&gt;
+              📍 Temuco, Región de La Araucanía &lt;br/&gt;
+              📧 contacto@nutrivida.cl
+            &lt;/small&gt;
+          &lt;/div&gt;
+&nbsp;
+          {/* Columna Central: Copyright, perfectamente al centro */}
+          &lt;div className="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center"&gt;
+            &lt;small className="text-white-50 m-0"&gt;
+              &amp;copy; {new Date().getFullYear()} NutriVida. Todos los derechos reservados.
+            &lt;/small&gt;
+          &lt;/div&gt;
+&nbsp;
+          {/* Columna Derecha: Enlaces Legales, pegados a la derecha */}
+          &lt;div className="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center"&gt;
+            &lt;a href="#" className="text-white-50 text-decoration-none mx-2 small"&gt;Términos&lt;/a&gt;
+            &lt;span className="text-white-50"&gt;|&lt;/span&gt;
+            &lt;a href="#" className="text-white-50 text-decoration-none mx-2 small"&gt;Privacidad&lt;/a&gt;
+          &lt;/div&gt;
+&nbsp;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/footer&gt;
   );
@@ -112,7 +175,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-10T13:26:09.790Z
+                at 2026-10-11T00:48:51.485Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
