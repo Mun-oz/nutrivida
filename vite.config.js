@@ -3,12 +3,14 @@ import babel from '@rolldown/plugin-babel'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: './',
+  base: '/nutrivida/', 
+  
   plugins: [
     react(),
     // Desactiva el compilador solo durante los tests para no afectar la cobertura
     !process.env.VITEST && babel({ presets: [reactCompilerPreset()] })
-  ],
+  ].filter(Boolean), // Filtramos los plugins falsos si process.env.VITEST es true
+  
   test: {
     environment: 'jsdom',
     globals: true,
