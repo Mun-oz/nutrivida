@@ -16,7 +16,7 @@ vi.mock('react-router', async () => {
   };
 });
 
-vi.mock('../context/AuthContext', () => ({
+vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({
     user: { email: 'admin@clinica.cl', rol: 'Administrador' },
     logout: vi.fn(),
