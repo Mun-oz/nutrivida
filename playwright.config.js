@@ -16,8 +16,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'],
-       },
+      use: {
+        channel: 'msedge', 
+        baseURL: 'http://localhost:4173',
+        trace: 'on-first-retry',
+      },
     }
   ],
 });
