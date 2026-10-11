@@ -54,7 +54,7 @@ export default function Productos() {
                 {/* Componente Card de Bootstrap */}
                 <div className="card h-100 shadow-sm border-0">
                   <img 
-                    src={`./assets/img/${servicio.img}`} 
+                    src={`/nutrivida/assets/img/${servicio.img}`} 
                     className="card-img-top" 
                     alt={servicio.nombre} 
                     style={{ height: '200px', objectFit: 'cover' }}

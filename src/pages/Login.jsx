@@ -49,7 +49,7 @@ export default function Login() {
               {/* Mitad Izquierda: Imagen decorativa (Se oculta en celulares) */}
               <div className="col-md-6 d-none d-md-block bg-light">
                 <img 
-                  src="./assets/img/Logo_NutriVida.png" 
+                  src="/nutrivida/assets/img/Logo_NutriVida.png" 
                   alt="Login NutriVida" 
                   className="img-fluid w-100 h-100" 
                   style={{ objectFit: 'cover', minHeight: '500px' }} 

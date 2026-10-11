@@ -6,7 +6,7 @@ export default function BlogDetalle1() {
       <div className="blog-wrapper">
         <article className="blog-detail-card">
           <div className="blog-card-image">
-            <img src="./assets/img/blog1.jpg" alt="Mitos del Metabolismo y el Agua Helada" className="blog-detail-image" />
+            <img src="/nutrivida/assets/img/blog1.jpg" alt="Mitos del Metabolismo y el Agua Helada" className="blog-detail-image" />
           </div>
           
           <div className="blog-detail-content">
