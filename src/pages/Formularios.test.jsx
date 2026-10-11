@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router';
 import userEvent from '@testing-library/user-event';
@@ -23,39 +23,46 @@ describe('Pruebas de Formularios Secundarios', () => {
   });
 
   describe('Formulario de Contacto', () => {
-    it('debe enviar el mensaje y mostrar alerta de éxito', async () => {
+    it('debe enviar el mensaje y redirigir a la vista de gracias', async () => {
       const user = userEvent.setup();
       render(<MemoryRouter><Contacto /></MemoryRouter>);
 
-      // Llenamos todos los campos del nuevo formulario
-      await user.type(screen.getByLabelText('Nombre Completo:'), 'Marcelo Muñoz');
-      await user.type(screen.getByLabelText('Teléfono:'), '+56912345678');
-      await user.type(screen.getByLabelText('Correo Electrónico:'), 'marcelo@ejemplo.com');
+      // 1. Llenamos los campos
+      await user.type(screen.getByLabelText(/Nombre Completo/i), 'Marcelo Muñoz');
+      await user.type(screen.getByLabelText(/Teléfono/i), '912345678'); 
+      await user.type(screen.getByLabelText(/Correo Electrónico/i), 'marcelo@ejemplo.com');
       
-      const selectAsunto = screen.getByLabelText('Asunto:');
+      const selectAsunto = screen.getByRole('combobox');
       await user.selectOptions(selectAsunto, 'Dudas sobre planes');
 
-      await user.type(screen.getByLabelText('Comentario:'), 'Consulta sobre plan deportivo');
-      
-      await user.click(screen.getByText('Enviar Mensaje'));
+      await user.type(screen.getByLabelText(/Comentario/i), 'Consulta general');
 
-      expect(window.alert).toHaveBeenCalledWith('¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.');
+      // 2. Forzamos el evento submit
+      const btnSubmit = screen.getByRole('button', { name: /Enviar Mensaje/i });
+      const form = btnSubmit.closest('form');
+      fireEvent.submit(form);
+
+      // 3. Verificamos la navegación correcta programada en Contacto.jsx
+      expect(mockedUseNavigate).toHaveBeenCalledWith('/gracias', { state: { tipo: 'contacto' } });
     });
   });
 
   describe('Formulario de Nuevo Servicio Admin', () => {
-    it('debe guardar el servicio y redirigir al catálogo', async () => {
+    it('debe guardar el servicio y redirigir al catálogo con banner', async () => {
       const user = userEvent.setup();
       render(<MemoryRouter><NuevoCatalogoAdmin /></MemoryRouter>);
 
-      await user.type(screen.getByLabelText('Nombre del Servicio:'), 'Plan Nutricional de Prueba');
-      await user.type(screen.getByLabelText('Descripción:'), 'Descripción detallada del plan');
-      await user.type(screen.getByLabelText('Precio (CLP):'), '25000');
+      await user.type(screen.getByLabelText(/Nombre del Servicio/i), 'Plan Nutricional');
+      await user.type(screen.getByLabelText(/Descripción/i), 'Plan detallado');
+      await user.type(screen.getByLabelText(/Precio/i), '25000');
       
-      await user.click(screen.getByText('Guardar Servicio'));
+      const btnSubmit = screen.getByText('Guardar Servicio');
+      const form = btnSubmit.closest('form');
+      fireEvent.submit(form);
 
-      expect(window.alert).toHaveBeenCalledWith('Servicio guardado exitosamente.');
-      expect(mockedUseNavigate).toHaveBeenCalledWith('/admin/catalogo');
+      expect(mockedUseNavigate).toHaveBeenCalledWith('/admin/catalogo', { 
+        state: { mensaje: 'Servicio registrado correctamente.' } 
+      });
     });
   });
 

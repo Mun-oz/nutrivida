@@ -3,6 +3,14 @@ import { describe, it, expect, vi } from 'vitest';
 import { MemoryRouter } from 'react-router';
 import App from './App';
 
+vi.mock('./context/AuthContext', () => ({
+  useAuth: () => ({
+    user: null, 
+    login: vi.fn(),
+    logout: vi.fn(),
+  }),
+}));
+
 // Simula la API fetch
 global.fetch = vi.fn(() =>
   Promise.resolve({

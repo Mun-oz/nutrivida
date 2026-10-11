@@ -1,8 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { MemoryRouter } from 'react-router';
 import userEvent from '@testing-library/user-event';
 import Header from './Header';
+
+vi.mock('../context/AuthContext', () => ({
+  useAuth: () => ({
+    user: null,
+    login: vi.fn(),
+    logout: vi.fn(),
+  }),
+}));
 
 describe('Pruebas del componente Header', () => {
   

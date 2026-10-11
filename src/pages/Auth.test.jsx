@@ -5,6 +5,14 @@ import userEvent from '@testing-library/user-event';
 import Login from './Login';
 import Registro from './Registro';
 
+vi.mock('../context/AuthContext', () => ({
+  useAuth: () => ({
+    user: null, 
+    login: vi.fn(),
+    logout: vi.fn(),
+  }),
+}));
+
 // Interceptamos window.alert para poder evaluar los mensajes en Registro.jsx sin que el test se detenga
 window.alert = vi.fn();
 
