@@ -6,7 +6,7 @@ export default function BlogDetalle2() {
       <div className="blog-wrapper">
         <article className="blog-detail-card">
           <div className="blog-card-image">
-            <img src="/assets/img/blog2.jpg" alt="La Regla de los 20 Minutos al Comer" className="blog-detail-image" />
+            <img src="./assets/img/blog2.jpg" alt="La Regla de los 20 Minutos al Comer" className="blog-detail-image" />
           </div>
           
           <div className="blog-detail-content">

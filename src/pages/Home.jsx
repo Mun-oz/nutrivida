@@ -22,7 +22,7 @@ export default function Home() {
             </div>
             <div className="col-md-6">
               <img 
-                src="/assets/img/clinNutri.jpg" 
+                src="./assets/img/clinNutri.jpg" 
                 alt="Clínica NutriVida" 
                 className="img-fluid w-100 h-100" 
                 style={{ objectFit: 'cover', minHeight: '300px' }} 
@@ -70,7 +70,7 @@ export default function Home() {
           {/* Tarjeta 1 */}
           <div className="col-12 col-md-6 col-lg-3">
             <div className="card h-100 shadow-sm border-0 text-center">
-              <img src="/assets/img/metabolismo.png" className="card-img-top p-3" alt="Control Metabólico" style={{ height: '180px', objectFit: 'contain' }}/>
+              <img src="./assets/img/metabolismo.png" className="card-img-top p-3" alt="Control Metabólico" style={{ height: '180px', objectFit: 'contain' }}/>
               <div className="card-body d-flex flex-column">
                 <h6 className="text-success fw-bold">Plan Control Metabólico</h6>
                 <small className="text-muted mb-3">Duración: 1 mes | Incluye pauta</small>
@@ -81,7 +81,7 @@ export default function Home() {
           {/* Tarjeta 2 */}
           <div className="col-12 col-md-6 col-lg-3">
             <div className="card h-100 shadow-sm border-0 text-center">
-              <img src="/assets/img/nutriciondeporte.jpg" className="card-img-top p-3" alt="Nutrición Deportiva" style={{ height: '180px', objectFit: 'contain' }}/>
+              <img src="./assets/img/nutriciondeporte.jpg" className="card-img-top p-3" alt="Nutrición Deportiva" style={{ height: '180px', objectFit: 'contain' }}/>
               <div className="card-body d-flex flex-column">
                 <h6 className="text-success fw-bold">Plan Nutrición Deportiva</h6>
                 <small className="text-muted mb-3">Duración: 1 mes | Eval. física</small>
@@ -92,7 +92,7 @@ export default function Home() {
           {/* Tarjeta 3 */}
           <div className="col-12 col-md-6 col-lg-3">
             <div className="card h-100 shadow-sm border-0 text-center">
-              <img src="/assets/img/t_veg.jpg" className="card-img-top p-3" alt="Transición Vegana" style={{ height: '180px', objectFit: 'contain' }}/>
+              <img src="./assets/img/t_veg.jpg" className="card-img-top p-3" alt="Transición Vegana" style={{ height: '180px', objectFit: 'contain' }}/>
               <div className="card-body d-flex flex-column">
                 <h6 className="text-success fw-bold">Plan Transición Vegana</h6>
                 <small className="text-muted mb-3">Duración: 1 mes | Recetario</small>
@@ -103,7 +103,7 @@ export default function Home() {
           {/* Tarjeta 4 */}
           <div className="col-12 col-md-6 col-lg-3">
             <div className="card h-100 shadow-sm border-0 text-center">
-              <img src="/assets/img/control_seg.png" className="card-img-top p-3" alt="Seguimiento" style={{ height: '180px', objectFit: 'contain' }}/>
+              <img src="./assets/img/control_seg.png" className="card-img-top p-3" alt="Seguimiento" style={{ height: '180px', objectFit: 'contain' }}/>
               <div className="card-body d-flex flex-column">
                 <h6 className="text-success fw-bold">Control de Seguimiento</h6>
                 <small className="text-muted mb-3">Duración: 30 min | Presencial</small>

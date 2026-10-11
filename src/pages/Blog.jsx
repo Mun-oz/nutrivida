@@ -18,7 +18,7 @@ export default function Blog() {
               <Link to="/blog-detalle-1" className="btn-primary btn-blog">VER CASO</Link>
             </div>
             <div className="blog-card-image">
-              <img src="/assets/img/blog1.jpg" alt="Agua y metabolismo" />
+              <img src="./assets/img/blog1.jpg" alt="Agua y metabolismo" />
             </div>
           </article>
 
@@ -30,7 +30,7 @@ export default function Blog() {
               <Link to="/blog-detalle-2" className="btn-primary btn-blog">VER CASO</Link>
             </div>
             <div className="blog-card-image">
-              <img src="/assets/img/blog2.jpg" alt="Nutrición y hábitos" />
+              <img src="./assets/img/blog2.jpg" alt="Nutrición y hábitos" />
             </div>
           </article>
         </section>
